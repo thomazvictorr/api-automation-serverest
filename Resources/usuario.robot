@@ -25,7 +25,7 @@ Cadastrar Usuario
     ...            data=${body}
     ...            expected_status=201
     ${id}          Set Variable    ${response.json()['_id']}
-    Dictionary Should Contain Value    ${response.json()}    Cadastro realizado com sucesso
+    Should Be Equal As Strings    ${response.json()['message']}    Cadastro realizado com sucesso
     RETURN    ${id}
 
 Consultar Usuario Lista
@@ -44,16 +44,15 @@ Consultar Usuario ID
     ...            expected_status=200
 
 Atualizar Usuario
-    [Arguments]    ${id}    ${email}
+    [Arguments]    ${id}
     ${body}        Get File    path=${EXECDIR}/Json/atlz_usuario.json
-
     ${header}      Create Dictionary    Content-Type=application/json
 
     ${response}    PUT On Session    alias=api    url=/usuarios/${id}
     ...            headers=${header}
     ...            data=${body}
     ...            expected_status=200
-    Dictionary Should Contain Value    ${response.json()}    Registro alterado com sucesso
+    Should Be Equal As Strings    ${response.json()['message']}    Registro alterado com sucesso
 
 Deletar Usuario
     [Arguments]    ${id}
@@ -62,7 +61,7 @@ Deletar Usuario
     ${response}    DELETE On Session    alias=api    url=/usuarios/${id}
     ...            headers=${header}
     ...            expected_status=200
-    Dictionary Should Contain Value    ${response.json()}    Registro excluído com sucesso
+    Should Be Equal As Strings    ${response.json()['message']}    Registro excluído com sucesso
 
 Login do Usuario
     [Arguments]    ${email}    ${password}
@@ -73,7 +72,7 @@ Login do Usuario
     ...            data={"email":"${email}","password":"${password}"}
     ...            expected_status=200
     ${token}       Set Variable    ${response.json()['authorization']}
-    Dictionary Should Contain Value    ${response.json()}    Login realizado com sucesso
+    Should Be Equal As Strings    ${response.json()['message']}    Login realizado com sucesso
     RETURN    ${token}
 
 ERRO - Cadastrar Usuario Duplicado
@@ -85,7 +84,7 @@ ERRO - Cadastrar Usuario Duplicado
     ...            headers=${header}
     ...            data=${body}
     ...            expected_status=400
-    Dictionary Should Contain Value    ${response.json()}    Este email já está sendo usado
+    Should Be Equal As Strings    ${response.json()['message']}    Este email já está sendo usado
 
 ERRO - Login com Senha Invalida
     [Arguments]    ${email}
@@ -95,7 +94,7 @@ ERRO - Login com Senha Invalida
     ...            headers=${header}
     ...            data={"email":"${email}","password":"senha_errada"}
     ...            expected_status=401
-    Dictionary Should Contain Value    ${response.json()}    Email e/ou senha inválidos
+    Should Be Equal As Strings    ${response.json()['message']}    Email e/ou senha inválidos
 
 ERRO - Consultar Usuario Inexistente
     ${header}      Create Dictionary    Content-Type=application/json
@@ -103,4 +102,4 @@ ERRO - Consultar Usuario Inexistente
     ${response}    GET On Session    alias=api    url=/usuarios/id_invalido_000
     ...            headers=${header}
     ...            expected_status=400
-    Dictionary Should Contain Value    ${response.json()}    Usuário não encontrado
+    Should Be Equal As Strings    ${response.json()['message']}    Usuário não encontrado

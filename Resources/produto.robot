@@ -20,7 +20,7 @@ Cadastrar Produto
     ...            data=${body}
     ...            expected_status=201
     ${idp}         Set Variable    ${response.json()['_id']}
-    Dictionary Should Contain Value    ${response.json()}    Cadastro realizado com sucesso
+    Should Be Equal As Strings    ${response.json()['message']}    Cadastro realizado com sucesso
     RETURN    ${idp}
 
 Consultar Produto Lista
@@ -49,7 +49,7 @@ Atualizar Produto
     ...            headers=${header}
     ...            data=${body}
     ...            expected_status=200
-    Dictionary Should Contain Value    ${response.json()}    Registro alterado com sucesso
+    Should Be Equal As Strings    ${response.json()['message']}    Registro alterado com sucesso
 
 Deletar Produto
     [Arguments]    ${idp}    ${token}
@@ -59,7 +59,7 @@ Deletar Produto
     ${response}    DELETE On Session    alias=api    url=/produtos/${idp}
     ...            headers=${header}
     ...            expected_status=200
-    Dictionary Should Contain Value    ${response.json()}    Registro excluído com sucesso
+    Should Be Equal As Strings    ${response.json()['message']}    Registro excluído com sucesso
 
 ERRO - Cadastrar Produto Sem Autorizacao
     ${body}        Get File    path=${EXECDIR}/Json/produto.json
@@ -70,7 +70,7 @@ ERRO - Cadastrar Produto Sem Autorizacao
     ...            headers=${header}
     ...            data=${body}
     ...            expected_status=401
-    Dictionary Should Contain Value    ${response.json()}    Token de acesso ausente, inválido, expirado ou usuário do token não existe mais
+    Should Be Equal As Strings    ${response.json()['message']}    Token de acesso ausente, inválido, expirado ou usuário do token não existe mais
 
 ERRO - Consultar Produto Inexistente
     ${header}      Create Dictionary    Content-Type=application/json
@@ -78,4 +78,4 @@ ERRO - Consultar Produto Inexistente
     ${response}    GET On Session    alias=api    url=/produtos/id_invalido_000
     ...            headers=${header}
     ...            expected_status=400
-    Dictionary Should Contain Value    ${response.json()}    Produto não encontrado
+    Should Be Equal As Strings    ${response.json()['message']}    Produto não encontrado
