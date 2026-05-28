@@ -57,4 +57,4 @@ Deletar Carrinho Cancelar Compra
     ${response}    DELETE On Session    alias=api    url=/carrinhos/cancelar-compra
     ...            headers=${header}
     ...            expected_status=200
-    Should Be Equal As Strings    ${response.json()['message']}    Não foi encontrado carrinho para esse usuário
+    Should Be Equal As Strings    ${response.json()['message']}    Registro excluído com sucesso. Estoque dos produtos reabastecido
