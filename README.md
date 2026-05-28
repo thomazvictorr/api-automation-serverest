@@ -1,6 +1,6 @@
 # 🤖 Automação de Testes de API — ServeRest
 
-![Tests](https://github.com/thomazvictorr/api-automation-serverest/actions/workflows/ci.yml/badge.svg)
+![Tests](https://github.com/SEU_USUARIO/SEU_REPOSITORIO/actions/workflows/ci.yml/badge.svg)
 
 Projeto de automação de testes para a API [ServeRest](https://serverest.dev), desenvolvido com **Robot Framework** e integrado ao **GitHub Actions** com publicação automática de relatório.
 
@@ -70,7 +70,7 @@ Os testes são executados automaticamente:
 
 O relatório é publicado automaticamente via **GitHub Pages** após cada execução.
 
-📄 **[Ver último relatório](https://thomazvictorr.github.io/api-automation-serverest/report/report.html)**
+📄 **[Ver último relatório](https://SEU_USUARIO.github.io/SEU_REPOSITORIO/report/report.html)**
 
 ---
 
@@ -85,4 +85,4 @@ O relatório é publicado automaticamente via **GitHub Pages** após cada execu�
 
 ## 👨‍💻 Autor
 
-**Thomáz Victor** — [LinkedIn](https://www.linkedin.com/in/thomazvictorr/) | [GitHub](https://github.com/thomazvictorr)
+**Thomáz Victor** — [LinkedIn](https://www.linkedin.com/in/thomazvictorr/) | [GitHub](https://github.com/SEU_USUARIO)

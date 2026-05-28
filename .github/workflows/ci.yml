@@ -8,6 +8,9 @@ on:
   schedule:
     - cron: '0 8 * * 1-5'  # executa todo dia útil às 8h (UTC)
 
+permissions:
+  contents: write
+
 jobs:
   robot-tests:
     name: Executar Testes Robot Framework
@@ -24,12 +27,16 @@ jobs:
 
       - name: Instalar dependências
         run: |
-          pip install robotframework
-          pip install robotframework-requests
+          pip install robotframework robotframework-requests
+
+      - name: Gerar email único para os testes
+        run: echo "TEST_EMAIL=user_$(date +%s)@test.com" >> $GITHUB_ENV
 
       - name: Executar testes
         run: |
-          robot --outputdir results Tests/API_Serverrest.robot
+          robot --outputdir results \
+                --variable EMAIL:${{ env.TEST_EMAIL }} \
+                Tests/API_Serverrest.robot
         continue-on-error: true
 
       - name: Publicar relatório no GitHub Pages

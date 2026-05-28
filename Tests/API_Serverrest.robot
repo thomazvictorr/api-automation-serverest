@@ -15,17 +15,18 @@ ${PASSWORD}     123456
 
 CT-001 CRUD Usuario - Fluxo Completo
     [Tags]    usuario    crud    regressao
-    ${id}      Cadastrar Usuario
-    ${token}   Login do Usuario       ${EMAIL}    ${PASSWORD}
+    ${id}      Cadastrar Usuario          ${EMAIL}    ${PASSWORD}
+    ${token}   Login do Usuario           ${EMAIL}    ${PASSWORD}
     Consultar Usuario Lista
-    Consultar Usuario ID               ${id}
-    Atualizar Usuario                  ${id}
-    Deletar Usuario                    ${id}
+    Consultar Usuario ID                  ${id}
+    Atualizar Usuario                     ${id}       ${EMAIL}
+    Deletar Usuario                       ${id}
 
 CT-002 Erro - Cadastrar Usuario com Email Duplicado
     [Tags]    usuario    negativo
-    Cadastrar Usuario
-    ERRO - Cadastrar Usuario Duplicado
+    ${id}      Cadastrar Usuario          ${EMAIL}    ${PASSWORD}
+    ERRO - Cadastrar Usuario Duplicado    ${EMAIL}    ${PASSWORD}
+    Deletar Usuario                       ${id}
 
 CT-003 Erro - Login com Senha Invalida
     [Tags]    usuario    negativo
@@ -39,12 +40,14 @@ CT-004 Erro - Consultar Usuario Inexistente
 
 CT-005 CRUD Produto - Fluxo Completo
     [Tags]    produto    crud    regressao
-    ${token}   Login do Usuario       ${EMAIL}    ${PASSWORD}
-    ${idp}     Cadastrar Produto      ${token}
+    ${id}      Cadastrar Usuario          ${EMAIL}    ${PASSWORD}
+    ${token}   Login do Usuario           ${EMAIL}    ${PASSWORD}
+    ${idp}     Cadastrar Produto          ${token}
     Consultar Produto Lista
-    Consultar Produto ID               ${idp}
-    Atualizar Produto                  ${idp}     ${token}
-    Deletar Produto                    ${idp}     ${token}
+    Consultar Produto ID                  ${idp}
+    Atualizar Produto                     ${idp}      ${token}
+    Deletar Produto                       ${idp}      ${token}
+    Deletar Usuario                       ${id}
 
 CT-006 Erro - Cadastrar Produto Sem Token
     [Tags]    produto    negativo
@@ -58,18 +61,24 @@ CT-007 Erro - Consultar Produto Inexistente
 
 CT-008 Carrinho - Concluir Compra com Sucesso
     [Tags]    carrinho    crud    regressao
-    ${token}   Login do Usuario           ${EMAIL}    ${PASSWORD}
-    ${idp}     Cadastrar Produto          ${token}
-    ${idc}     Cadastrar Carrinho         ${token}    ${idp}
+    ${id}      Cadastrar Usuario              ${EMAIL}    ${PASSWORD}
+    ${token}   Login do Usuario               ${EMAIL}    ${PASSWORD}
+    ${idp}     Cadastrar Produto              ${token}
+    ${idc}     Cadastrar Carrinho             ${token}    ${idp}
     Consultar Carrinho Lista
-    Consultar Carrinho ID                 ${idc}
-    Deletar Carrinho Concluir Compra      ${token}
+    Consultar Carrinho ID                     ${idc}
+    Deletar Carrinho Concluir Compra          ${token}
+    Deletar Produto                           ${idp}      ${token}
+    Deletar Usuario                           ${id}
 
 CT-009 Carrinho - Cancelar Compra
     [Tags]    carrinho    regressao
-    ${token}   Login do Usuario           ${EMAIL}    ${PASSWORD}
-    ${idp}     Cadastrar Produto          ${token}
-    ${idc}     Cadastrar Carrinho         ${token}    ${idp}
+    ${id}      Cadastrar Usuario              ${EMAIL}    ${PASSWORD}
+    ${token}   Login do Usuario               ${EMAIL}    ${PASSWORD}
+    ${idp}     Cadastrar Produto              ${token}
+    ${idc}     Cadastrar Carrinho             ${token}    ${idp}
     Consultar Carrinho Lista
-    Consultar Carrinho ID                 ${idc}
-    Deletar Carrinho Cancelar Compra      ${token}
+    Consultar Carrinho ID                     ${idc}
+    Deletar Carrinho Cancelar Compra          ${token}
+    Deletar Produto                           ${idp}      ${token}
+    Deletar Usuario                           ${id}

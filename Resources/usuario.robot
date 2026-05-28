@@ -16,9 +16,9 @@ Encerrar Sessão
     Delete All Sessions
 
 Cadastrar Usuario
-    ${body}        Get File    path=${EXECDIR}/Json/usuario.json
-
+    [Arguments]    ${email}    ${password}
     ${header}      Create Dictionary    Content-Type=application/json
+    ${body}        Set Variable    {"nome":"Usuário Teste","email":"${email}","password":"${password}","administrador":"true"}
 
     ${response}    POST On Session    alias=api    url=/usuarios
     ...            headers=${header}
@@ -44,7 +44,7 @@ Consultar Usuario ID
     ...            expected_status=200
 
 Atualizar Usuario
-    [Arguments]    ${id}
+    [Arguments]    ${id}    ${email}
     ${body}        Get File    path=${EXECDIR}/Json/atlz_usuario.json
 
     ${header}      Create Dictionary    Content-Type=application/json
@@ -77,9 +77,9 @@ Login do Usuario
     RETURN    ${token}
 
 ERRO - Cadastrar Usuario Duplicado
-    ${body}        Get File    path=${EXECDIR}/Json/usuario.json
-
+    [Arguments]    ${email}    ${password}
     ${header}      Create Dictionary    Content-Type=application/json
+    ${body}        Set Variable    {"nome":"Usuário Teste","email":"${email}","password":"${password}","administrador":"true"}
 
     ${response}    POST On Session    alias=api    url=/usuarios
     ...            headers=${header}
