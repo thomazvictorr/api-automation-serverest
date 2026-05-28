@@ -10,7 +10,8 @@ Library     Collections
 
 Cadastrar Produto
     [Arguments]    ${token}
-    ${body}        Get File    path=${EXECDIR}/Json/produto.json
+    ${ts}=         Evaluate    __import__('time').time_ns()
+    ${body}=       Set Variable    {"nome":"Curso RobotFramework ${ts}","preco":500,"descricao":"Robot","quantidade":200}
 
     ${header}      Create Dictionary    Content-Type=application/json
     ...            Authorization=${token}
