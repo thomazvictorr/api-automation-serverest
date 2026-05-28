@@ -1,0 +1,59 @@
+*** Settings ***
+Library     RequestsLibrary
+Library    String
+Library    OperatingSystem
+Library    Collections
+
+*** Variables ***
+*** Keywords ***
+
+Cadastar Carrinho
+    [Arguments]    ${token}    ${idp}
+    ${body}        Get File    path=${EXECDIR}/Json/carrinho.json
+    ${body}        Replace String Using Regexp    ${body}    _id    ${idp} 
+
+    ${header}      Create Dictionary    Content-Type=application/json
+    ...            Authorization=${token}
+
+    ${response}    POST On Session    alias=api    url=/carrinhos
+    ...            headers=${header}    
+    ...            data=${body}    
+    ...            expected_status=201
+    ${idc}         Set Variable    ${response.json()['_id']}
+    Dictionary Should Contain Value    ${response.json()}    Cadastro realizado com sucesso
+    RETURN    ${idc} 
+
+Consultar Carrinho Lista
+    ${header}      Create Dictionary    Content-Type=application/json
+
+    ${response}    GET On Session    alias=api    url=/carrinhos
+    ...            headers=${header}     
+    ...            expected_status=200
+
+Consultar Carrinho ID
+    [Arguments]    ${idc}
+    ${header}      Create Dictionary    Content-Type=application/json
+
+    ${response}    GET On Session    alias=api    url=/carrinhos/${idc}
+    ...            headers=${header}     
+    ...            expected_status=200
+
+Deletar Carrinho Concluir Compra
+    [Arguments]    ${token}
+    ${header}      Create Dictionary    Content-Type=application/json
+    ...            Authorization=${token}
+
+    ${response}    DELETE On Session    alias=api    url=/carrinhos/concluir-compra  
+    ...            headers=${header}     
+    ...            expected_status=200
+    Dictionary Should Contain Value    ${response.json()}    Registro excluído com sucesso
+
+Deletar Carrinho Cancelar Compra
+    [Arguments]    ${token}
+    ${header}      Create Dictionary    Content-Type=application/json
+    ...            Authorization=${token}
+
+    ${response}    DELETE On Session    alias=api    url=/carrinhos/cancelar-compra 
+    ...            headers=${header}     
+    ...            expected_status=200
+    Dictionary Should Contain Value    ${response.json()}    Não foi encontrado carrinho para esse usuário

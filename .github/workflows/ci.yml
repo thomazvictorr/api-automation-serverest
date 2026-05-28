@@ -1,0 +1,48 @@
+name: API Tests - ServeRest
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 8 * * 1-5'  # executa todo dia útil às 8h (UTC)
+
+jobs:
+  robot-tests:
+    name: Executar Testes Robot Framework
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependências
+        run: |
+          pip install robotframework
+          pip install robotframework-requests
+
+      - name: Executar testes
+        run: |
+          robot --outputdir results Tests/API_Serverrest.robot
+        continue-on-error: true
+
+      - name: Publicar relatório no GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: results
+          destination_dir: report
+
+      - name: Upload dos resultados como artefato
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: robot-results
+          path: results/
