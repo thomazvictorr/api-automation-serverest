@@ -70,7 +70,7 @@ Os testes são executados automaticamente:
 
 O relatório é publicado automaticamente via **GitHub Pages** após cada execução.
 
-📄 **[Ver último relatório](https://SEU_USUARIO.github.io/SEU_REPOSITORIO/report/report.html)**
+📄 **[Ver último relatório](https://thomazvictorr.github.io/api-automation-serverest/report/report.html)**
 
 ---
 
@@ -85,4 +85,4 @@ O relatório é publicado automaticamente via **GitHub Pages** após cada execu�
 
 ## 👨‍💻 Autor
 
-**Thomáz Victor** — [LinkedIn](https://www.linkedin.com/in/thomazvictorr/) | [GitHub](https://github.com/SEU_USUARIO)
+**Thomáz Victor** — [LinkedIn](https://www.linkedin.com/in/thomazvictorr/) | [GitHub](https://github.com/thomazvictorr)
