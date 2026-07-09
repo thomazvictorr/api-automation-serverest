@@ -1,74 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.12.13 on linux)" generated="2026-07-08T10:22:48.678320" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.2 (Python 3.12.13 on linux)" generated="2026-07-09T11:07:52.607776" rpa="false" schemaversion="5">
 <suite id="s1" name="API Serverrest" source="/home/runner/work/api-automation-serverest/api-automation-serverest/Tests/API_Serverrest.robot">
 <kw name="Criar Sessão" owner="usuario" type="SETUP">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:48.812428" level="INFO">Creating Session using : alias=api, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2026-07-09T11:07:52.921134" level="INFO">Creating Session using : alias=api, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>alias=api</arg>
 <arg>url=${url}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2026-07-08T10:22:48.812199" elapsed="0.000591"/>
+<status status="PASS" start="2026-07-09T11:07:52.920911" elapsed="0.000577"/>
 </kw>
 <arg>https://serverest.dev</arg>
-<status status="PASS" start="2026-07-08T10:22:48.811434" elapsed="0.001448"/>
+<status status="PASS" start="2026-07-09T11:07:52.920291" elapsed="0.001286"/>
 </kw>
 <test id="s1-t1" name="CT-001 CRUD Usuario - Fluxo Completo" line="24">
 <kw name="Gerar Email">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-07-08T10:22:48.814075" level="INFO">${ts} = 1783506168814006368</msg>
+<msg time="2026-07-09T11:07:52.922607" level="INFO">${ts} = 1783595272922551154</msg>
 <var>${ts}</var>
 <arg>__import__('time').time_ns()</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-07-08T10:22:48.813670" elapsed="0.000432"/>
+<status status="PASS" start="2026-07-09T11:07:52.922254" elapsed="0.000374"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:48.814569" level="INFO">${email} = ct001_1783506168814006368@test.com</msg>
+<msg time="2026-07-09T11:07:52.922941" level="INFO">${email} = ct001_1783595272922551154@test.com</msg>
 <var>${email}</var>
 <arg>${prefixo}_${ts}@test.com</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:48.814204" elapsed="0.000390"/>
+<status status="PASS" start="2026-07-09T11:07:52.922708" elapsed="0.000251"/>
 </kw>
 <return>
 <value>${email}</value>
-<status status="PASS" start="2026-07-08T10:22:48.814643" elapsed="0.000051"/>
+<status status="PASS" start="2026-07-09T11:07:52.923000" elapsed="0.000050"/>
 </return>
-<msg time="2026-07-08T10:22:48.814816" level="INFO">${email} = ct001_1783506168814006368@test.com</msg>
+<msg time="2026-07-09T11:07:52.923146" level="INFO">${email} = ct001_1783595272922551154@test.com</msg>
 <var>${email}</var>
 <arg>ct001</arg>
-<status status="PASS" start="2026-07-08T10:22:48.813397" elapsed="0.001440"/>
+<status status="PASS" start="2026-07-09T11:07:52.922049" elapsed="0.001112"/>
 </kw>
 <kw name="Cadastrar Usuario" owner="usuario">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:48.815685" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<msg time="2026-07-09T11:07:52.923788" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
 <var>${header}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:48.815277" elapsed="0.000432"/>
+<status status="PASS" start="2026-07-09T11:07:52.923502" elapsed="0.000303"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:48.816079" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct001_1783506168814006368@test.com","password":"123456","administrador":"true"}</msg>
+<msg time="2026-07-09T11:07:52.924074" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct001_1783595272922551154@test.com","password":"123456","administrador":"true"}</msg>
 <var>${body}</var>
 <arg>{"nome":"Usuário Teste","email":"${email}","password":"${password}","administrador":"true"}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:48.815805" elapsed="0.000296"/>
+<status status="PASS" start="2026-07-09T11:07:52.923882" elapsed="0.000208"/>
 </kw>
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.369059" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+<msg time="2026-07-09T11:07:53.149432" level="INFO">POST Request : url=https://serverest.dev/usuarios 
  path_url=/usuarios 
  headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '113'} 
- body={"nome":"Usuário Teste","email":"ct001_1783506168814006368@test.com","password":"123456","administrador":"true"} 
+ body={"nome":"Usuário Teste","email":"ct001_1783595272922551154@test.com","password":"123456","administrador":"true"} 
  </msg>
-<msg time="2026-07-08T10:22:49.369187" level="INFO">POST Response : url=https://serverest.dev/usuarios 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '42385dc8dafcbacce8c07542a7031638;o=1', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "YQ5xIGgUkipJvdYb"
-} 
+<msg time="2026-07-09T11:07:53.149551" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=503, reason=Service Unavailable 
+ headers={'date': 'Thu, 09 Jul 2026 11:07:53 GMT', 'content-type': 'text/html; charset=UTF-8', 'server': 'Google Frontend', 'Content-Length': '302'} 
+ body=
+&lt;html&gt;&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;title&gt;503 Server Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body text=#000000 bgcolor=#ffffff&gt;
+&lt;h1&gt;Error: Server Error&lt;/h1&gt;
+&lt;h2&gt;The service you requested is not available yet.&lt;p&gt;Please try again in 30 seconds.&lt;/h2&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;/body&gt;&lt;/html&gt;
+ 
  </msg>
-<msg time="2026-07-08T10:22:49.369263" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2026-07-09T11:07:53.149650" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.369511" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<msg time="2026-07-09T11:07:53.149815" level="FAIL">Url: https://serverest.dev/usuarios Expected status: 503 != 201</msg>
 <var>${response}</var>
 <arg>alias=api</arg>
 <arg>url=/usuarios</arg>
@@ -76,342 +83,119 @@
 <arg>data=${body}</arg>
 <arg>expected_status=201</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:48.816193" elapsed="0.553359"/>
+<status status="FAIL" start="2026-07-09T11:07:52.924158" elapsed="0.226874">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.370634" level="INFO">${id} = YQ5xIGgUkipJvdYb</msg>
 <var>${id}</var>
 <arg>${response.json()['_id']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.369813" elapsed="0.000846"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.151306" elapsed="0.000034"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${response.json()['message']}</arg>
 <arg>Cadastro realizado com sucesso</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.370764" elapsed="0.000506"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.151418" elapsed="0.000014"/>
 </kw>
 <return>
 <value>${id}</value>
-<status status="PASS" start="2026-07-08T10:22:49.371323" elapsed="0.000049"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.151471" elapsed="0.000026"/>
 </return>
-<msg time="2026-07-08T10:22:49.371526" level="INFO">${id} = YQ5xIGgUkipJvdYb</msg>
 <var>${id}</var>
 <arg>${email}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-07-08T10:22:48.814995" elapsed="0.556553"/>
+<status status="FAIL" start="2026-07-09T11:07:52.923299" elapsed="0.228329">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </kw>
 <kw name="Login do Usuario" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.372485" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.372178" elapsed="0.000331"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.435311" level="INFO">POST Request : url=https://serverest.dev/login 
- path_url=/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '66'} 
- body={"email":"ct001_1783506168814006368@test.com","password":"123456"} 
- </msg>
-<msg time="2026-07-08T10:22:49.435399" level="INFO">POST Response : url=https://serverest.dev/login 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'fb691091abfae559e8c07542a7031ef1', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '295'} 
- body={
-    "message": "Login realizado com sucesso",
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDAxXzE3ODM1MDYxNjg4MTQwMDYzNjhAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE2OSwiZXhwIjoxNzgzNTA2NzY5fQ.Ouug0DalUZ8KKE6aFCc_1ovQ67wOftA7MCt49_Fy-nc"
-} 
- </msg>
-<msg time="2026-07-08T10:22:49.435536" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.435759" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/login</arg>
-<arg>headers=${header}</arg>
-<arg>data={"email":"${email}","password":"${password}"}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.372602" elapsed="0.063195"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.436882" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDAxXzE3ODM1MDYxNjg4MTQwMDYzNjhAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE2OSwiZXhwIjoxNzgzNTA2NzY5fQ.Ouug0DalUZ8KKE6aFCc_1...</msg>
-<var>${token}</var>
-<arg>${response.json()['authorization']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.436027" elapsed="0.000881"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Login realizado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.437023" elapsed="0.000517"/>
-</kw>
-<return>
-<value>${token}</value>
-<status status="PASS" start="2026-07-08T10:22:49.437593" elapsed="0.000039"/>
-</return>
-<msg time="2026-07-08T10:22:49.437758" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDAxXzE3ODM1MDYxNjg4MTQwMDYzNjhAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE2OSwiZXhwIjoxNzgzNTA2NzY5fQ.Ouug0DalUZ8KKE6aFCc_1...</msg>
 <var>${token}</var>
 <arg>${email}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-07-08T10:22:49.371726" elapsed="0.066055"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.151831" elapsed="0.000021"/>
 </kw>
 <kw name="Consultar Usuario Lista" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.438459" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.438153" elapsed="0.000335"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.490149" level="INFO">GET Request : url=https://serverest.dev/usuarios 
- path_url=/usuarios 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:49.490260" level="INFO">GET Response : url=https://serverest.dev/usuarios 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '44909714d8b28888e8c07542a70314e2', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '480'} 
- body={
-    "quantidade": 2,
-    "usuarios": [
-        {
-            "nome": "Fulano da Silva",
-            "email": "fulano@qa.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "0uxuPY0cbmQhpEz1"
-        },
-        {
-            "nome": "Usuário Teste",
-            "email": "ct001_1783506168814006368@test.com",
-            "password": "123456",
-            "administrador": "true",
-            "_id": "YQ5xIGgUkipJvdYb"
-        }
-    ]
-} 
- </msg>
-<msg time="2026-07-08T10:22:49.490339" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.490557" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/usuarios</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.438581" elapsed="0.052025"/>
-</kw>
-<status status="PASS" start="2026-07-08T10:22:49.437926" elapsed="0.052816"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.151944" elapsed="0.000019"/>
 </kw>
 <kw name="Consultar Usuario ID" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.491787" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.491458" elapsed="0.000357"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.538988" level="INFO">GET Request : url=https://serverest.dev/usuarios/YQ5xIGgUkipJvdYb 
- path_url=/usuarios/YQ5xIGgUkipJvdYb 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:49.539090" level="INFO">GET Response : url=https://serverest.dev/usuarios/YQ5xIGgUkipJvdYb 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '29851aa6ed0cf879e8c07542a70312ae', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '169'} 
- body={
-    "nome": "Usuário Teste",
-    "email": "ct001_1783506168814006368@test.com",
-    "password": "123456",
-    "administrador": "true",
-    "_id": "YQ5xIGgUkipJvdYb"
-} 
- </msg>
-<msg time="2026-07-08T10:22:49.539155" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.539303" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/usuarios/${id}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.491911" elapsed="0.047430"/>
-</kw>
 <arg>${id}</arg>
-<status status="PASS" start="2026-07-08T10:22:49.490996" elapsed="0.048484"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.152039" elapsed="0.000012"/>
 </kw>
 <kw name="Atualizar Usuario" owner="usuario">
-<kw name="Get File" owner="OperatingSystem">
-<msg time="2026-07-08T10:22:49.540284" level="INFO" html="true">Getting file '&lt;a href="file:///home/runner/work/api-automation-serverest/api-automation-serverest/Json/atlz_usuario.json"&gt;/home/runner/work/api-automation-serverest/api-automation-serverest/Json/atlz_usuario.json&lt;/a&gt;'.</msg>
-<msg time="2026-07-08T10:22:49.540487" level="INFO">${body} = {
-  "nome": "Usuário Teste Atualizado",
-  "email": "user_updated_123456@test.com",
-  "password": "123456",
-  "administrador": "true"
-}
-</msg>
-<var>${body}</var>
-<arg>path=${EXECDIR}/Json/atlz_usuario.json</arg>
-<doc>Returns the contents of a specified file.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.540105" elapsed="0.000422"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.540989" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.540678" elapsed="0.000333"/>
-</kw>
-<kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.592619" level="INFO">PUT Request : url=https://serverest.dev/usuarios/YQ5xIGgUkipJvdYb 
- path_url=/usuarios/YQ5xIGgUkipJvdYb 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '136'} 
- body={
-  "nome": "Usuário Teste Atualizado",
-  "email": "user_updated_123456@test.com",
-  "password": "123456",
-  "administrador": "true"
-}
- 
- </msg>
-<msg time="2026-07-08T10:22:49.592708" level="INFO">PUT Response : url=https://serverest.dev/usuarios/YQ5xIGgUkipJvdYb 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'f4917137f1c635fbe8c07542a7031fbe', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '50'} 
- body={
-    "message": "Registro alterado com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:49.592771" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.592913" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/usuarios/${id}</arg>
-<arg>headers=${header}</arg>
-<arg>data=${body}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.541152" elapsed="0.051802"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro alterado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.593190" elapsed="0.000789"/>
-</kw>
 <arg>${id}</arg>
-<status status="PASS" start="2026-07-08T10:22:49.539744" elapsed="0.054301"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.152127" elapsed="0.000015"/>
 </kw>
 <kw name="Deletar Usuario" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.594775" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.594494" elapsed="0.000304"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.667166" level="INFO">DELETE Request : url=https://serverest.dev/usuarios/YQ5xIGgUkipJvdYb 
- path_url=/usuarios/YQ5xIGgUkipJvdYb 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:49.667289" level="INFO">DELETE Response : url=https://serverest.dev/usuarios/YQ5xIGgUkipJvdYb 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'c07e6cfa5a78decee8c07542a7031d8a', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '51'} 
- body={
-    "message": "Registro excluído com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:49.667398" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.667607" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/usuarios/${id}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.594890" elapsed="0.072756"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro excluído com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.667885" elapsed="0.000990"/>
-</kw>
 <arg>${id}</arg>
-<status status="PASS" start="2026-07-08T10:22:49.594204" elapsed="0.074771"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.152227" elapsed="0.000013"/>
 </kw>
 <tag>crud</tag>
 <tag>regressao</tag>
 <tag>usuario</tag>
-<status status="PASS" start="2026-07-08T10:22:48.812953" elapsed="0.856144"/>
+<status status="FAIL" start="2026-07-09T11:07:52.921647" elapsed="0.230751">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </test>
 <test id="s1-t2" name="CT-002 Erro - Cadastrar Usuario com Email Duplicado" line="34">
 <kw name="Gerar Email">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.670338" level="INFO">${ts} = 1783506169670283930</msg>
+<msg time="2026-07-09T11:07:53.153729" level="INFO">${ts} = 1783595273153673091</msg>
 <var>${ts}</var>
 <arg>__import__('time').time_ns()</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.670034" elapsed="0.000328"/>
+<status status="PASS" start="2026-07-09T11:07:53.153334" elapsed="0.000417"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.670829" level="INFO">${email} = ct002_1783506169670283930@test.com</msg>
+<msg time="2026-07-09T11:07:53.154039" level="INFO">${email} = ct002_1783595273153673091@test.com</msg>
 <var>${email}</var>
 <arg>${prefixo}_${ts}@test.com</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.670499" elapsed="0.000362"/>
+<status status="PASS" start="2026-07-09T11:07:53.153832" elapsed="0.000224"/>
 </kw>
 <return>
 <value>${email}</value>
-<status status="PASS" start="2026-07-08T10:22:49.670905" elapsed="0.000038"/>
+<status status="PASS" start="2026-07-09T11:07:53.154090" elapsed="0.000032"/>
 </return>
-<msg time="2026-07-08T10:22:49.671050" level="INFO">${email} = ct002_1783506169670283930@test.com</msg>
+<msg time="2026-07-09T11:07:53.154244" level="INFO">${email} = ct002_1783595273153673091@test.com</msg>
 <var>${email}</var>
 <arg>ct002</arg>
-<status status="PASS" start="2026-07-08T10:22:49.669803" elapsed="0.001266"/>
+<status status="PASS" start="2026-07-09T11:07:53.153074" elapsed="0.001186"/>
 </kw>
 <kw name="Cadastrar Usuario" owner="usuario">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.671773" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<msg time="2026-07-09T11:07:53.154899" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
 <var>${header}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.671509" elapsed="0.000285"/>
+<status status="PASS" start="2026-07-09T11:07:53.154651" elapsed="0.000269"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.672137" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct002_1783506169670283930@test.com","password":"123456","administrador":"true"}</msg>
+<msg time="2026-07-09T11:07:53.155230" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct002_1783595273153673091@test.com","password":"123456","administrador":"true"}</msg>
 <var>${body}</var>
 <arg>{"nome":"Usuário Teste","email":"${email}","password":"${password}","administrador":"true"}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.671884" elapsed="0.000275"/>
+<status status="PASS" start="2026-07-09T11:07:53.154995" elapsed="0.000256"/>
 </kw>
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.725037" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+<msg time="2026-07-09T11:07:53.217291" level="INFO">POST Request : url=https://serverest.dev/usuarios 
  path_url=/usuarios 
  headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '113'} 
- body={"nome":"Usuário Teste","email":"ct002_1783506169670283930@test.com","password":"123456","administrador":"true"} 
+ body={"nome":"Usuário Teste","email":"ct002_1783595273153673091@test.com","password":"123456","administrador":"true"} 
  </msg>
-<msg time="2026-07-08T10:22:49.725131" level="INFO">POST Response : url=https://serverest.dev/usuarios 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '202e1ab1c2a19d7ee8c07542a7031f4c', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "LdurZHuSWgwkpyuM"
-} 
+<msg time="2026-07-09T11:07:53.217391" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=503, reason=Service Unavailable 
+ headers={'date': 'Thu, 09 Jul 2026 11:07:53 GMT', 'content-type': 'text/html; charset=UTF-8', 'server': 'Google Frontend', 'Content-Length': '302'} 
+ body=
+&lt;html&gt;&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;title&gt;503 Server Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body text=#000000 bgcolor=#ffffff&gt;
+&lt;h1&gt;Error: Server Error&lt;/h1&gt;
+&lt;h2&gt;The service you requested is not available yet.&lt;p&gt;Please try again in 30 seconds.&lt;/h2&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;/body&gt;&lt;/html&gt;
+ 
  </msg>
-<msg time="2026-07-08T10:22:49.725251" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2026-07-09T11:07:53.217481" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.725382" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<msg time="2026-07-09T11:07:53.217614" level="FAIL">Url: https://serverest.dev/usuarios Expected status: 503 != 201</msg>
 <var>${response}</var>
 <arg>alias=api</arg>
 <arg>url=/usuarios</arg>
@@ -419,175 +203,99 @@
 <arg>data=${body}</arg>
 <arg>expected_status=201</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.672247" elapsed="0.053160"/>
+<status status="FAIL" start="2026-07-09T11:07:53.155322" elapsed="0.062780">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.726503" level="INFO">${id} = LdurZHuSWgwkpyuM</msg>
 <var>${id}</var>
 <arg>${response.json()['_id']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.725658" elapsed="0.000871"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.218337" elapsed="0.000034"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${response.json()['message']}</arg>
 <arg>Cadastro realizado com sucesso</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.726638" elapsed="0.000496"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.218447" elapsed="0.000014"/>
 </kw>
 <return>
 <value>${id}</value>
-<status status="PASS" start="2026-07-08T10:22:49.727187" elapsed="0.000040"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.218502" elapsed="0.000022"/>
 </return>
-<msg time="2026-07-08T10:22:49.727347" level="INFO">${id} = LdurZHuSWgwkpyuM</msg>
 <var>${id}</var>
 <arg>${email}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-07-08T10:22:49.671214" elapsed="0.056154"/>
+<status status="FAIL" start="2026-07-09T11:07:53.154439" elapsed="0.064192">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </kw>
 <kw name="ERRO - Cadastrar Usuario Duplicado" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.728126" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.727862" elapsed="0.000286"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.728527" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct002_1783506169670283930@test.com","password":"123456","administrador":"true"}</msg>
-<var>${body}</var>
-<arg>{"nome":"Usuário Teste","email":"${email}","password":"${password}","administrador":"true"}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.728240" elapsed="0.000311"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.773063" level="INFO">POST Request : url=https://serverest.dev/usuarios 
- path_url=/usuarios 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '113'} 
- body={"nome":"Usuário Teste","email":"ct002_1783506169670283930@test.com","password":"123456","administrador":"true"} 
- </msg>
-<msg time="2026-07-08T10:22:49.773163" level="INFO">POST Response : url=https://serverest.dev/usuarios 
- status=400, reason=Bad Request 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '3120aff5853a12e2e8c07542a70313fe', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '53'} 
- body={
-    "message": "Este email já está sendo usado"
-} 
- </msg>
-<msg time="2026-07-08T10:22:49.773230" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.773359" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/usuarios</arg>
-<arg>headers=${header}</arg>
-<arg>data=${body}</arg>
-<arg>expected_status=400</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.728643" elapsed="0.044742"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Este email já está sendo usado</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.773656" elapsed="0.000719"/>
-</kw>
 <arg>${email}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-07-08T10:22:49.727555" elapsed="0.046912"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.218817" elapsed="0.000020"/>
 </kw>
 <kw name="Deletar Usuario" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.775151" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.774892" elapsed="0.000287"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.826237" level="INFO">DELETE Request : url=https://serverest.dev/usuarios/LdurZHuSWgwkpyuM 
- path_url=/usuarios/LdurZHuSWgwkpyuM 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:49.826331" level="INFO">DELETE Response : url=https://serverest.dev/usuarios/LdurZHuSWgwkpyuM 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '39aa6d50523ac4cce8c07542a7031286', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '51'} 
- body={
-    "message": "Registro excluído com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:49.826402" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.826599" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/usuarios/${id}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.775270" elapsed="0.051369"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro excluído com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.826871" elapsed="0.001072"/>
-</kw>
 <arg>${id}</arg>
-<status status="PASS" start="2026-07-08T10:22:49.774636" elapsed="0.053408"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.218934" elapsed="0.000019"/>
 </kw>
 <tag>negativo</tag>
 <tag>usuario</tag>
-<status status="PASS" start="2026-07-08T10:22:49.669358" elapsed="0.158847"/>
+<status status="FAIL" start="2026-07-09T11:07:53.152660" elapsed="0.066444">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </test>
 <test id="s1-t3" name="CT-003 Erro - Login com Senha Invalida" line="41">
 <kw name="Gerar Email">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.830496" level="INFO">${ts} = 1783506169830348763</msg>
+<msg time="2026-07-09T11:07:53.220444" level="INFO">${ts} = 1783595273220383094</msg>
 <var>${ts}</var>
 <arg>__import__('time').time_ns()</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.829532" elapsed="0.001097"/>
+<status status="PASS" start="2026-07-09T11:07:53.220006" elapsed="0.000463"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.831262" level="INFO">${email} = ct003_1783506169830348763@test.com</msg>
+<msg time="2026-07-09T11:07:53.220782" level="INFO">${email} = ct003_1783595273220383094@test.com</msg>
 <var>${email}</var>
 <arg>${prefixo}_${ts}@test.com</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.830823" elapsed="0.000474"/>
+<status status="PASS" start="2026-07-09T11:07:53.220557" elapsed="0.000244"/>
 </kw>
 <return>
 <value>${email}</value>
-<status status="PASS" start="2026-07-08T10:22:49.831363" elapsed="0.000053"/>
+<status status="PASS" start="2026-07-09T11:07:53.220838" elapsed="0.000034"/>
 </return>
-<msg time="2026-07-08T10:22:49.831633" level="INFO">${email} = ct003_1783506169830348763@test.com</msg>
+<msg time="2026-07-09T11:07:53.220959" level="INFO">${email} = ct003_1783595273220383094@test.com</msg>
 <var>${email}</var>
 <arg>ct003</arg>
-<status status="PASS" start="2026-07-08T10:22:49.829115" elapsed="0.002554"/>
+<status status="PASS" start="2026-07-09T11:07:53.219763" elapsed="0.001211"/>
 </kw>
 <kw name="ERRO - Login com Senha Invalida" owner="usuario">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.832801" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<msg time="2026-07-09T11:07:53.221760" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
 <var>${header}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.832311" elapsed="0.000530"/>
+<status status="PASS" start="2026-07-09T11:07:53.221306" elapsed="0.000475"/>
 </kw>
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.877851" level="INFO">POST Request : url=https://serverest.dev/login 
+<msg time="2026-07-09T11:07:53.286018" level="INFO">POST Request : url=https://serverest.dev/login 
  path_url=/login 
  headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '72'} 
- body={"email":"ct003_1783506169830348763@test.com","password":"senha_errada"} 
+ body={"email":"ct003_1783595273220383094@test.com","password":"senha_errada"} 
  </msg>
-<msg time="2026-07-08T10:22:49.877941" level="INFO">POST Response : url=https://serverest.dev/login 
- status=401, reason=Unauthorized 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '5f8a615014dd07d7e8c07542a7031eda', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '48'} 
- body={
-    "message": "Email e/ou senha inválidos"
-} 
+<msg time="2026-07-09T11:07:53.286120" level="INFO">POST Response : url=https://serverest.dev/login 
+ status=503, reason=Service Unavailable 
+ headers={'date': 'Thu, 09 Jul 2026 11:07:53 GMT', 'content-type': 'text/html; charset=UTF-8', 'server': 'Google Frontend', 'Content-Length': '302'} 
+ body=
+&lt;html&gt;&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;title&gt;503 Server Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body text=#000000 bgcolor=#ffffff&gt;
+&lt;h1&gt;Error: Server Error&lt;/h1&gt;
+&lt;h2&gt;The service you requested is not available yet.&lt;p&gt;Please try again in 30 seconds.&lt;/h2&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;/body&gt;&lt;/html&gt;
+ 
  </msg>
-<msg time="2026-07-08T10:22:49.878023" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2026-07-09T11:07:53.286279" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.878160" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<msg time="2026-07-09T11:07:53.286438" level="FAIL">Url: https://serverest.dev/login Expected status: 503 != 401</msg>
 <var>${response}</var>
 <arg>alias=api</arg>
 <arg>url=/login</arg>
@@ -595,123 +303,137 @@
 <arg>data={"email":"${email}","password":"senha_errada"}</arg>
 <arg>expected_status=401</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.833014" elapsed="0.045194"/>
+<status status="FAIL" start="2026-07-09T11:07:53.221871" elapsed="0.065030">Url: https://serverest.dev/login Expected status: 503 != 401</status>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${response.json()['message']}</arg>
 <arg>Email e/ou senha inválidos</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.878468" elapsed="0.000716"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.287112" elapsed="0.000032"/>
 </kw>
 <arg>${email}</arg>
-<status status="PASS" start="2026-07-08T10:22:49.831902" elapsed="0.047357"/>
+<status status="FAIL" start="2026-07-09T11:07:53.221086" elapsed="0.066245">Url: https://serverest.dev/login Expected status: 503 != 401</status>
 </kw>
 <tag>negativo</tag>
 <tag>usuario</tag>
-<status status="PASS" start="2026-07-08T10:22:49.828529" elapsed="0.050831"/>
+<status status="FAIL" start="2026-07-09T11:07:53.219370" elapsed="0.068112">Url: https://serverest.dev/login Expected status: 503 != 401</status>
 </test>
 <test id="s1-t4" name="CT-004 Erro - Consultar Usuario Inexistente" line="46">
 <kw name="ERRO - Consultar Usuario Inexistente" owner="usuario">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.880721" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<msg time="2026-07-09T11:07:53.288762" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
 <var>${header}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.880385" elapsed="0.000360"/>
+<status status="PASS" start="2026-07-09T11:07:53.288377" elapsed="0.000414"/>
 </kw>
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.926539" level="INFO">GET Request : url=https://serverest.dev/usuarios/id_invalido_000 
+<msg time="2026-07-09T11:07:53.351053" level="INFO">GET Request : url=https://serverest.dev/usuarios/id_invalido_000 
  path_url=/usuarios/id_invalido_000 
  headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg time="2026-07-08T10:22:49.926632" level="INFO">GET Response : url=https://serverest.dev/usuarios/id_invalido_000 
- status=400, reason=Bad Request 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '06d09a7d1107566ee8c07542a7031ca6', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '67'} 
- body={
-    "id": "id deve ter exatamente 16 caracteres alfanuméricos"
-} 
+<msg time="2026-07-09T11:07:53.351155" level="INFO">GET Response : url=https://serverest.dev/usuarios/id_invalido_000 
+ status=503, reason=Service Unavailable 
+ headers={'date': 'Thu, 09 Jul 2026 11:07:53 GMT', 'content-type': 'text/html; charset=UTF-8', 'server': 'Google Frontend', 'Content-Length': '302'} 
+ body=
+&lt;html&gt;&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;title&gt;503 Server Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body text=#000000 bgcolor=#ffffff&gt;
+&lt;h1&gt;Error: Server Error&lt;/h1&gt;
+&lt;h2&gt;The service you requested is not available yet.&lt;p&gt;Please try again in 30 seconds.&lt;/h2&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;/body&gt;&lt;/html&gt;
+ 
  </msg>
-<msg time="2026-07-08T10:22:49.926698" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2026-07-09T11:07:53.351283" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.926847" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<msg time="2026-07-09T11:07:53.351437" level="FAIL">Url: https://serverest.dev/usuarios/id_invalido_000 Expected status: 503 != 400</msg>
 <var>${response}</var>
 <arg>alias=api</arg>
 <arg>url=/usuarios/id_invalido_000</arg>
 <arg>headers=${header}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.880849" elapsed="0.046039"/>
+<status status="FAIL" start="2026-07-09T11:07:53.288909" elapsed="0.062963">Url: https://serverest.dev/usuarios/id_invalido_000 Expected status: 503 != 400</status>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.928160" level="INFO">Length is 1.</msg>
 <arg>${response.json()}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.927116" elapsed="0.001100"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.352088" elapsed="0.000030"/>
 </kw>
-<status status="PASS" start="2026-07-08T10:22:49.880138" elapsed="0.048148"/>
+<status status="FAIL" start="2026-07-09T11:07:53.288130" elapsed="0.064111">Url: https://serverest.dev/usuarios/id_invalido_000 Expected status: 503 != 400</status>
 </kw>
 <tag>negativo</tag>
 <tag>usuario</tag>
-<status status="PASS" start="2026-07-08T10:22:49.879648" elapsed="0.048743"/>
+<status status="FAIL" start="2026-07-09T11:07:53.287719" elapsed="0.064665">Url: https://serverest.dev/usuarios/id_invalido_000 Expected status: 503 != 400</status>
 </test>
 <test id="s1-t5" name="CT-005 CRUD Produto - Fluxo Completo" line="52">
 <kw name="Gerar Email">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.929903" level="INFO">${ts} = 1783506169929842777</msg>
+<msg time="2026-07-09T11:07:53.353633" level="INFO">${ts} = 1783595273353579165</msg>
 <var>${ts}</var>
 <arg>__import__('time').time_ns()</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.929553" elapsed="0.000374"/>
+<status status="PASS" start="2026-07-09T11:07:53.353267" elapsed="0.000386"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.930328" level="INFO">${email} = ct005_1783506169929842777@test.com</msg>
+<msg time="2026-07-09T11:07:53.353937" level="INFO">${email} = ct005_1783595273353579165@test.com</msg>
 <var>${email}</var>
 <arg>${prefixo}_${ts}@test.com</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.930041" elapsed="0.000308"/>
+<status status="PASS" start="2026-07-09T11:07:53.353734" elapsed="0.000219"/>
 </kw>
 <return>
 <value>${email}</value>
-<status status="PASS" start="2026-07-08T10:22:49.930392" elapsed="0.000039"/>
+<status status="PASS" start="2026-07-09T11:07:53.353990" elapsed="0.000034"/>
 </return>
-<msg time="2026-07-08T10:22:49.930595" level="INFO">${email} = ct005_1783506169929842777@test.com</msg>
+<msg time="2026-07-09T11:07:53.354105" level="INFO">${email} = ct005_1783595273353579165@test.com</msg>
 <var>${email}</var>
 <arg>ct005</arg>
-<status status="PASS" start="2026-07-08T10:22:49.929236" elapsed="0.001380"/>
+<status status="PASS" start="2026-07-09T11:07:53.353015" elapsed="0.001104"/>
 </kw>
 <kw name="Cadastrar Usuario" owner="usuario">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.931501" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<msg time="2026-07-09T11:07:53.354667" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
 <var>${header}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.931111" elapsed="0.000425"/>
+<status status="PASS" start="2026-07-09T11:07:53.354452" elapsed="0.000232"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.932025" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct005_1783506169929842777@test.com","password":"123456","administrador":"true"}</msg>
+<msg time="2026-07-09T11:07:53.354944" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct005_1783595273353579165@test.com","password":"123456","administrador":"true"}</msg>
 <var>${body}</var>
 <arg>{"nome":"Usuário Teste","email":"${email}","password":"${password}","administrador":"true"}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.931723" elapsed="0.000331"/>
+<status status="PASS" start="2026-07-09T11:07:53.354756" elapsed="0.000204"/>
 </kw>
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:49.983805" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+<msg time="2026-07-09T11:07:53.415725" level="INFO">POST Request : url=https://serverest.dev/usuarios 
  path_url=/usuarios 
  headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '113'} 
- body={"nome":"Usuário Teste","email":"ct005_1783506169929842777@test.com","password":"123456","administrador":"true"} 
+ body={"nome":"Usuário Teste","email":"ct005_1783595273353579165@test.com","password":"123456","administrador":"true"} 
  </msg>
-<msg time="2026-07-08T10:22:49.983893" level="INFO">POST Response : url=https://serverest.dev/usuarios 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '9a210d40d86020bbe8c07542a7031643', 'date': 'Wed, 08 Jul 2026 10:22:49 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "OMTZ3jRVEP3BTTeY"
-} 
+<msg time="2026-07-09T11:07:53.415827" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=503, reason=Service Unavailable 
+ headers={'date': 'Thu, 09 Jul 2026 11:07:53 GMT', 'content-type': 'text/html; charset=UTF-8', 'server': 'Google Frontend', 'Content-Length': '302'} 
+ body=
+&lt;html&gt;&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;title&gt;503 Server Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body text=#000000 bgcolor=#ffffff&gt;
+&lt;h1&gt;Error: Server Error&lt;/h1&gt;
+&lt;h2&gt;The service you requested is not available yet.&lt;p&gt;Please try again in 30 seconds.&lt;/h2&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;/body&gt;&lt;/html&gt;
+ 
  </msg>
-<msg time="2026-07-08T10:22:49.983956" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2026-07-09T11:07:53.415913" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2026-07-08T10:22:49.984107" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<msg time="2026-07-09T11:07:53.416041" level="FAIL">Url: https://serverest.dev/usuarios Expected status: 503 != 201</msg>
 <var>${response}</var>
 <arg>alias=api</arg>
 <arg>url=/usuarios</arg>
@@ -719,411 +441,71 @@
 <arg>data=${body}</arg>
 <arg>expected_status=201</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.932151" elapsed="0.051998"/>
+<status status="FAIL" start="2026-07-09T11:07:53.355030" elapsed="0.061483">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.985195" level="INFO">${id} = OMTZ3jRVEP3BTTeY</msg>
 <var>${id}</var>
 <arg>${response.json()['_id']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.984387" elapsed="0.000833"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.416721" elapsed="0.000028"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${response.json()['message']}</arg>
 <arg>Cadastro realizado com sucesso</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.985352" elapsed="0.000568"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.416866" elapsed="0.000013"/>
 </kw>
 <return>
 <value>${id}</value>
-<status status="PASS" start="2026-07-08T10:22:49.985976" elapsed="0.000040"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.416917" elapsed="0.000022"/>
 </return>
-<msg time="2026-07-08T10:22:49.986139" level="INFO">${id} = OMTZ3jRVEP3BTTeY</msg>
 <var>${id}</var>
 <arg>${email}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-07-08T10:22:49.930782" elapsed="0.055378"/>
+<status status="FAIL" start="2026-07-09T11:07:53.354253" elapsed="0.062787">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </kw>
 <kw name="Login do Usuario" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:49.987181" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.986903" elapsed="0.000301"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.036565" level="INFO">POST Request : url=https://serverest.dev/login 
- path_url=/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '66'} 
- body={"email":"ct005_1783506169929842777@test.com","password":"123456"} 
- </msg>
-<msg time="2026-07-08T10:22:50.036662" level="INFO">POST Response : url=https://serverest.dev/login 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '66c1a571ada12feee8c07542a7031f24', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '295'} 
- body={
-    "message": "Login realizado com sucesso",
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA1XzE3ODM1MDYxNjk5Mjk4NDI3NzdAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.GmpZyz8gJF1yTJ-wHg_WNdPRZj--2veNNW6VsYxUn0I"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.036746" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.036883" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/login</arg>
-<arg>headers=${header}</arg>
-<arg>data={"email":"${email}","password":"${password}"}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:49.987311" elapsed="0.049624"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.038043" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA1XzE3ODM1MDYxNjk5Mjk4NDI3NzdAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.GmpZyz8gJF1yTJ-wHg_WN...</msg>
-<var>${token}</var>
-<arg>${response.json()['authorization']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.037184" elapsed="0.000885"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Login realizado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.038192" elapsed="0.000559"/>
-</kw>
-<return>
-<value>${token}</value>
-<status status="PASS" start="2026-07-08T10:22:50.038802" elapsed="0.000039"/>
-</return>
-<msg time="2026-07-08T10:22:50.038966" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA1XzE3ODM1MDYxNjk5Mjk4NDI3NzdAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.GmpZyz8gJF1yTJ-wHg_WN...</msg>
 <var>${token}</var>
 <arg>${email}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-07-08T10:22:49.986338" elapsed="0.052649"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.417246" elapsed="0.000020"/>
 </kw>
 <kw name="Cadastrar Produto" owner="produto">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.039751" level="INFO">${ts} = 1783506170039698886</msg>
-<var>${ts}</var>
-<arg>__import__('time').time_ns()</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.039425" elapsed="0.000349"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.040106" level="INFO">${body} = {"nome":"Curso RobotFramework 1783506170039698886","preco":500,"descricao":"Robot","quantidade":200}</msg>
-<var>${body}</var>
-<arg>{"nome":"Curso RobotFramework ${ts}","preco":500,"descricao":"Robot","quantidade":200}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.039869" elapsed="0.000328"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.040653" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA1XzE3ODM1MDYxNjk5Mjk4NDI3NzdAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.040317" elapsed="0.000360"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.119881" level="INFO">POST Request : url=https://serverest.dev/produtos 
- path_url=/produtos 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA1XzE3ODM1MDYxNjk5Mjk4NDI3NzdAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.GmpZyz8gJF1yTJ-wHg_WNdPRZj--2veNNW6VsYxUn0I', 'Content-Length': '100'} 
- body={"nome":"Curso RobotFramework 1783506170039698886","preco":500,"descricao":"Robot","quantidade":200} 
- </msg>
-<msg time="2026-07-08T10:22:50.120004" level="INFO">POST Response : url=https://serverest.dev/produtos 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '3c7ff95c7939b816e8c07542a7031abc', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "4sUcoRJU8PSaiQwr"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.120096" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.120270" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/produtos</arg>
-<arg>headers=${header}</arg>
-<arg>data=${body}</arg>
-<arg>expected_status=201</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.040771" elapsed="0.079537"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.121291" level="INFO">${idp} = 4sUcoRJU8PSaiQwr</msg>
-<var>${idp}</var>
-<arg>${response.json()['_id']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.120572" elapsed="0.000743"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Cadastro realizado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.121415" elapsed="0.000580"/>
-</kw>
-<return>
-<value>${idp}</value>
-<status status="PASS" start="2026-07-08T10:22:50.122060" elapsed="0.000045"/>
-</return>
-<msg time="2026-07-08T10:22:50.122232" level="INFO">${idp} = 4sUcoRJU8PSaiQwr</msg>
 <var>${idp}</var>
 <arg>${token}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.039173" elapsed="0.083080"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.417377" elapsed="0.000014"/>
 </kw>
 <kw name="Consultar Produto Lista" owner="produto">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.122907" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.122648" elapsed="0.000282"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.173477" level="INFO">GET Request : url=https://serverest.dev/produtos 
- path_url=/produtos 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:50.173584" level="INFO">GET Response : url=https://serverest.dev/produtos 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '2e47328586533212e8c07542a7031b3f', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '649'} 
- body={
-    "quantidade": 3,
-    "produtos": [
-        {
-            "nome": "Curso RobotFramework 1783506170039698886",
-            "preco": 500,
-            "descricao": "Robot",
-            "quantidade": 200,
-            "_id": "4sUcoRJU8PSaiQwr"
-        },
-        {
-            "nome": "Logitech MX Vertical",
-            "preco": 470,
-            "descricao": "Mouse",
-            "quantidade": 382,
-            "_id": "BeeJh5lz3k6kSIzA"
-        },
-        {
-            "nome": "Samsung 60 polegadas",
-            "preco": 5240,
-            "descricao": "TV",
-            "quantidade": 49977,
-            "_id": "K6leHdftCeOJj8BJ"
-        }
-    ]
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.173668" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.173815" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/produtos</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.123027" elapsed="0.050818"/>
-</kw>
-<status status="PASS" start="2026-07-08T10:22:50.122401" elapsed="0.051585"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.417469" elapsed="0.000013"/>
 </kw>
 <kw name="Consultar Produto ID" owner="produto">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.174974" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.174647" elapsed="0.000350"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.224333" level="INFO">GET Request : url=https://serverest.dev/produtos/4sUcoRJU8PSaiQwr 
- path_url=/produtos/4sUcoRJU8PSaiQwr 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:50.224421" level="INFO">GET Response : url=https://serverest.dev/produtos/4sUcoRJU8PSaiQwr 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '2b28dca93c128e29e8c07542a70312a8', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '156'} 
- body={
-    "nome": "Curso RobotFramework 1783506170039698886",
-    "preco": 500,
-    "descricao": "Robot",
-    "quantidade": 200,
-    "_id": "4sUcoRJU8PSaiQwr"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.224580" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.224708" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/produtos/${idp}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.175093" elapsed="0.049641"/>
-</kw>
 <arg>${idp}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.174228" elapsed="0.050632"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.417554" elapsed="0.000258"/>
 </kw>
 <kw name="Atualizar Produto" owner="produto">
-<kw name="Get File" owner="OperatingSystem">
-<msg time="2026-07-08T10:22:50.225592" level="INFO" html="true">Getting file '&lt;a href="file:///home/runner/work/api-automation-serverest/api-automation-serverest/Json/atlz_produto.json"&gt;/home/runner/work/api-automation-serverest/api-automation-serverest/Json/atlz_produto.json&lt;/a&gt;'.</msg>
-<msg time="2026-07-08T10:22:50.225739" level="INFO">${body} = {
-  "nome": "Curso RobotFramework API",
-  "preco": 500,
-  "descricao": "Robot API",
-  "quantidade": 200
-}</msg>
-<var>${body}</var>
-<arg>path=${EXECDIR}/Json/atlz_produto.json</arg>
-<doc>Returns the contents of a specified file.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.225403" elapsed="0.000358"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.226212" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA1XzE3ODM1MDYxNjk5Mjk4NDI3NzdAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.225865" elapsed="0.000370"/>
-</kw>
-<kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.291284" level="INFO">PUT Request : url=https://serverest.dev/produtos/4sUcoRJU8PSaiQwr 
- path_url=/produtos/4sUcoRJU8PSaiQwr 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA1XzE3ODM1MDYxNjk5Mjk4NDI3NzdAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.GmpZyz8gJF1yTJ-wHg_WNdPRZj--2veNNW6VsYxUn0I', 'Content-Length': '105'} 
- body={
-  "nome": "Curso RobotFramework API",
-  "preco": 500,
-  "descricao": "Robot API",
-  "quantidade": 200
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.291367" level="INFO">PUT Response : url=https://serverest.dev/produtos/4sUcoRJU8PSaiQwr 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'd1ffbb773f5877cae8c07542a70314a3', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '50'} 
- body={
-    "message": "Registro alterado com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.291460" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.291601" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/produtos/${idp}</arg>
-<arg>headers=${header}</arg>
-<arg>data=${body}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.226331" elapsed="0.065295"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro alterado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.291853" elapsed="0.000746"/>
-</kw>
 <arg>${idp}</arg>
 <arg>${token}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.225072" elapsed="0.067591"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.417901" elapsed="0.000014"/>
 </kw>
 <kw name="Deletar Produto" owner="produto">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.293422" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA1XzE3ODM1MDYxNjk5Mjk4NDI3NzdAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.293101" elapsed="0.000366"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.349427" level="INFO">DELETE Request : url=https://serverest.dev/produtos/4sUcoRJU8PSaiQwr 
- path_url=/produtos/4sUcoRJU8PSaiQwr 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA1XzE3ODM1MDYxNjk5Mjk4NDI3NzdAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.GmpZyz8gJF1yTJ-wHg_WNdPRZj--2veNNW6VsYxUn0I', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:50.349559" level="INFO">DELETE Response : url=https://serverest.dev/produtos/4sUcoRJU8PSaiQwr 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '135a634ab367b209e8c07542a7031f7f', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '51'} 
- body={
-    "message": "Registro excluído com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.349623" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.349748" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/produtos/${idp}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.293567" elapsed="0.056205"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro excluído com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.349995" elapsed="0.000668"/>
-</kw>
 <arg>${idp}</arg>
 <arg>${token}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.292817" elapsed="0.057910"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.417995" elapsed="0.000013"/>
 </kw>
 <kw name="Deletar Usuario" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.351473" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.351137" elapsed="0.000361"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.397145" level="INFO">DELETE Request : url=https://serverest.dev/usuarios/OMTZ3jRVEP3BTTeY 
- path_url=/usuarios/OMTZ3jRVEP3BTTeY 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:50.397248" level="INFO">DELETE Response : url=https://serverest.dev/usuarios/OMTZ3jRVEP3BTTeY 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '73fb026ab839233ce8c07542a703191c', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '51'} 
- body={
-    "message": "Registro excluído com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.397324" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.397495" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/usuarios/${id}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.351593" elapsed="0.045941"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro excluído com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.397729" elapsed="0.000621"/>
-</kw>
 <arg>${id}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.350881" elapsed="0.047532"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.418083" elapsed="0.000012"/>
 </kw>
 <tag>crud</tag>
 <tag>produto</tag>
 <tag>regressao</tag>
-<status status="PASS" start="2026-07-08T10:22:49.928715" elapsed="0.469825"/>
+<status status="FAIL" start="2026-07-09T11:07:53.352604" elapsed="0.065629">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </test>
 <test id="s1-t6" name="CT-006 Erro - Cadastrar Produto Sem Token" line="64">
 <kw name="ERRO - Cadastrar Produto Sem Autorizacao" owner="produto">
 <kw name="Get File" owner="OperatingSystem">
-<msg time="2026-07-08T10:22:50.399508" level="INFO" html="true">Getting file '&lt;a href="file:///home/runner/work/api-automation-serverest/api-automation-serverest/Json/produto.json"&gt;/home/runner/work/api-automation-serverest/api-automation-serverest/Json/produto.json&lt;/a&gt;'.</msg>
-<msg time="2026-07-08T10:22:50.399657" level="INFO">${body} = {
+<msg time="2026-07-09T11:07:53.419107" level="INFO" html="true">Getting file '&lt;a href="file:///home/runner/work/api-automation-serverest/api-automation-serverest/Json/produto.json"&gt;/home/runner/work/api-automation-serverest/api-automation-serverest/Json/produto.json&lt;/a&gt;'.</msg>
+<msg time="2026-07-09T11:07:53.419294" level="INFO">${body} = {
   "nome": "Curso RobotFramework",
   "preco": 500,
   "descricao": "Robot",
@@ -1132,17 +514,17 @@
 <var>${body}</var>
 <arg>path=${EXECDIR}/Json/produto.json</arg>
 <doc>Returns the contents of a specified file.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.399324" elapsed="0.000355"/>
+<status status="PASS" start="2026-07-09T11:07:53.418924" elapsed="0.000395"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.400044" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<msg time="2026-07-09T11:07:53.419746" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
 <var>${header}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.399781" elapsed="0.000284"/>
+<status status="PASS" start="2026-07-09T11:07:53.419435" elapsed="0.000329"/>
 </kw>
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.442021" level="INFO">POST Request : url=https://serverest.dev/produtos 
+<msg time="2026-07-09T11:07:53.482303" level="INFO">POST Request : url=https://serverest.dev/produtos 
  path_url=/produtos 
  headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '97'} 
  body={
@@ -1152,16 +534,24 @@
   "quantidade": 200
 } 
  </msg>
-<msg time="2026-07-08T10:22:50.442100" level="INFO">POST Response : url=https://serverest.dev/produtos 
- status=401, reason=Unauthorized 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'e27f0628dd0ec51be8c07542a70312b9', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '103'} 
- body={
-    "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
-} 
+<msg time="2026-07-09T11:07:53.482404" level="INFO">POST Response : url=https://serverest.dev/produtos 
+ status=503, reason=Service Unavailable 
+ headers={'date': 'Thu, 09 Jul 2026 11:07:53 GMT', 'content-type': 'text/html; charset=UTF-8', 'server': 'Google Frontend', 'Content-Length': '302'} 
+ body=
+&lt;html&gt;&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;title&gt;503 Server Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body text=#000000 bgcolor=#ffffff&gt;
+&lt;h1&gt;Error: Server Error&lt;/h1&gt;
+&lt;h2&gt;The service you requested is not available yet.&lt;p&gt;Please try again in 30 seconds.&lt;/h2&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;/body&gt;&lt;/html&gt;
+ 
  </msg>
-<msg time="2026-07-08T10:22:50.442167" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2026-07-09T11:07:53.482483" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.442296" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<msg time="2026-07-09T11:07:53.482612" level="FAIL">Url: https://serverest.dev/produtos Expected status: 503 != 401</msg>
 <var>${response}</var>
 <arg>alias=api</arg>
 <arg>url=/produtos</arg>
@@ -1169,122 +559,136 @@
 <arg>data=${body}</arg>
 <arg>expected_status=401</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.400155" elapsed="0.042178"/>
+<status status="FAIL" start="2026-07-09T11:07:53.419852" elapsed="0.063198">Url: https://serverest.dev/produtos Expected status: 503 != 401</status>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${response.json()['message']}</arg>
 <arg>Token de acesso ausente, inválido, expirado ou usuário do token não existe mais</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.442567" elapsed="0.000592"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.483268" elapsed="0.000030"/>
 </kw>
-<status status="PASS" start="2026-07-08T10:22:50.399116" elapsed="0.044104"/>
+<status status="FAIL" start="2026-07-09T11:07:53.418734" elapsed="0.064663">Url: https://serverest.dev/produtos Expected status: 503 != 401</status>
 </kw>
 <tag>negativo</tag>
 <tag>produto</tag>
-<status status="PASS" start="2026-07-08T10:22:50.398749" elapsed="0.044556"/>
+<status status="FAIL" start="2026-07-09T11:07:53.418437" elapsed="0.065100">Url: https://serverest.dev/produtos Expected status: 503 != 401</status>
 </test>
 <test id="s1-t7" name="CT-007 Erro - Consultar Produto Inexistente" line="68">
 <kw name="ERRO - Consultar Produto Inexistente" owner="produto">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.444519" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<msg time="2026-07-09T11:07:53.484664" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
 <var>${header}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.444215" elapsed="0.000328"/>
+<status status="PASS" start="2026-07-09T11:07:53.484336" elapsed="0.000347"/>
 </kw>
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.488471" level="INFO">GET Request : url=https://serverest.dev/produtos/id_invalido_000 
+<msg time="2026-07-09T11:07:53.547443" level="INFO">GET Request : url=https://serverest.dev/produtos/id_invalido_000 
  path_url=/produtos/id_invalido_000 
  headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg time="2026-07-08T10:22:50.488572" level="INFO">GET Response : url=https://serverest.dev/produtos/id_invalido_000 
- status=400, reason=Bad Request 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '74ac7114e60756e3e8c07542a70314b4', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '67'} 
- body={
-    "id": "id deve ter exatamente 16 caracteres alfanuméricos"
-} 
+<msg time="2026-07-09T11:07:53.547541" level="INFO">GET Response : url=https://serverest.dev/produtos/id_invalido_000 
+ status=503, reason=Service Unavailable 
+ headers={'date': 'Thu, 09 Jul 2026 11:07:53 GMT', 'content-type': 'text/html; charset=UTF-8', 'server': 'Google Frontend', 'Content-Length': '302'} 
+ body=
+&lt;html&gt;&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;title&gt;503 Server Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body text=#000000 bgcolor=#ffffff&gt;
+&lt;h1&gt;Error: Server Error&lt;/h1&gt;
+&lt;h2&gt;The service you requested is not available yet.&lt;p&gt;Please try again in 30 seconds.&lt;/h2&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;/body&gt;&lt;/html&gt;
+ 
  </msg>
-<msg time="2026-07-08T10:22:50.488688" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2026-07-09T11:07:53.547614" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.488826" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<msg time="2026-07-09T11:07:53.547740" level="FAIL">Url: https://serverest.dev/produtos/id_invalido_000 Expected status: 503 != 400</msg>
 <var>${response}</var>
 <arg>alias=api</arg>
 <arg>url=/produtos/id_invalido_000</arg>
 <arg>headers=${header}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.444635" elapsed="0.044229"/>
+<status status="FAIL" start="2026-07-09T11:07:53.484763" elapsed="0.063520">Url: https://serverest.dev/produtos/id_invalido_000 Expected status: 503 != 400</status>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.489985" level="INFO">Length is 1.</msg>
 <arg>${response.json()}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.489084" elapsed="0.000947"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.548579" elapsed="0.000039"/>
 </kw>
-<status status="PASS" start="2026-07-08T10:22:50.444009" elapsed="0.046083"/>
+<status status="FAIL" start="2026-07-09T11:07:53.484098" elapsed="0.064656">Url: https://serverest.dev/produtos/id_invalido_000 Expected status: 503 != 400</status>
 </kw>
 <tag>negativo</tag>
 <tag>produto</tag>
-<status status="PASS" start="2026-07-08T10:22:50.443561" elapsed="0.046620"/>
+<status status="FAIL" start="2026-07-09T11:07:53.483737" elapsed="0.065202">Url: https://serverest.dev/produtos/id_invalido_000 Expected status: 503 != 400</status>
 </test>
 <test id="s1-t8" name="CT-008 Carrinho - Concluir Compra com Sucesso" line="74">
 <kw name="Gerar Email">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.491810" level="INFO">${ts} = 1783506170491750213</msg>
+<msg time="2026-07-09T11:07:53.550635" level="INFO">${ts} = 1783595273550544935</msg>
 <var>${ts}</var>
 <arg>__import__('time').time_ns()</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.491215" elapsed="0.000620"/>
+<status status="PASS" start="2026-07-09T11:07:53.550115" elapsed="0.000554"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.492208" level="INFO">${email} = ct008_1783506170491750213@test.com</msg>
+<msg time="2026-07-09T11:07:53.551137" level="INFO">${email} = ct008_1783595273550544935@test.com</msg>
 <var>${email}</var>
 <arg>${prefixo}_${ts}@test.com</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.491937" elapsed="0.000294"/>
+<status status="PASS" start="2026-07-09T11:07:53.550798" elapsed="0.000364"/>
 </kw>
 <return>
 <value>${email}</value>
-<status status="PASS" start="2026-07-08T10:22:50.492275" elapsed="0.000038"/>
+<status status="PASS" start="2026-07-09T11:07:53.551271" elapsed="0.000056"/>
 </return>
-<msg time="2026-07-08T10:22:50.492419" level="INFO">${email} = ct008_1783506170491750213@test.com</msg>
+<msg time="2026-07-09T11:07:53.551431" level="INFO">${email} = ct008_1783595273550544935@test.com</msg>
 <var>${email}</var>
 <arg>ct008</arg>
-<status status="PASS" start="2026-07-08T10:22:50.490962" elapsed="0.001501"/>
+<status status="PASS" start="2026-07-09T11:07:53.549780" elapsed="0.001668"/>
 </kw>
 <kw name="Cadastrar Usuario" owner="usuario">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.493151" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<msg time="2026-07-09T11:07:53.552322" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
 <var>${header}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.492895" elapsed="0.000278"/>
+<status status="PASS" start="2026-07-09T11:07:53.551819" elapsed="0.000524"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.493545" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct008_1783506170491750213@test.com","password":"123456","administrador":"true"}</msg>
+<msg time="2026-07-09T11:07:53.552639" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct008_1783595273550544935@test.com","password":"123456","administrador":"true"}</msg>
 <var>${body}</var>
 <arg>{"nome":"Usuário Teste","email":"${email}","password":"${password}","administrador":"true"}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.493263" elapsed="0.000306"/>
+<status status="PASS" start="2026-07-09T11:07:53.552426" elapsed="0.000231"/>
 </kw>
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.537118" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+<msg time="2026-07-09T11:07:53.616079" level="INFO">POST Request : url=https://serverest.dev/usuarios 
  path_url=/usuarios 
  headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '113'} 
- body={"nome":"Usuário Teste","email":"ct008_1783506170491750213@test.com","password":"123456","administrador":"true"} 
+ body={"nome":"Usuário Teste","email":"ct008_1783595273550544935@test.com","password":"123456","administrador":"true"} 
  </msg>
-<msg time="2026-07-08T10:22:50.537218" level="INFO">POST Response : url=https://serverest.dev/usuarios 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '1db47986910d8a21e8c07542a70315f3', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "SFHW29GPZjgbUV5g"
-} 
+<msg time="2026-07-09T11:07:53.616155" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=503, reason=Service Unavailable 
+ headers={'date': 'Thu, 09 Jul 2026 11:07:53 GMT', 'content-type': 'text/html; charset=UTF-8', 'server': 'Google Frontend', 'Content-Length': '302'} 
+ body=
+&lt;html&gt;&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;title&gt;503 Server Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body text=#000000 bgcolor=#ffffff&gt;
+&lt;h1&gt;Error: Server Error&lt;/h1&gt;
+&lt;h2&gt;The service you requested is not available yet.&lt;p&gt;Please try again in 30 seconds.&lt;/h2&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;/body&gt;&lt;/html&gt;
+ 
  </msg>
-<msg time="2026-07-08T10:22:50.537307" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2026-07-09T11:07:53.616279" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.537519" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<msg time="2026-07-09T11:07:53.616394" level="FAIL">Url: https://serverest.dev/usuarios Expected status: 503 != 201</msg>
 <var>${response}</var>
 <arg>alias=api</arg>
 <arg>url=/usuarios</arg>
@@ -1292,555 +696,135 @@
 <arg>data=${body}</arg>
 <arg>expected_status=201</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.493660" elapsed="0.043908"/>
+<status status="FAIL" start="2026-07-09T11:07:53.552729" elapsed="0.064066">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.538713" level="INFO">${id} = SFHW29GPZjgbUV5g</msg>
 <var>${id}</var>
 <arg>${response.json()['_id']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.537807" elapsed="0.000931"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.616951" elapsed="0.000025"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${response.json()['message']}</arg>
 <arg>Cadastro realizado com sucesso</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.538846" elapsed="0.000477"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.617049" elapsed="0.000013"/>
 </kw>
 <return>
 <value>${id}</value>
-<status status="PASS" start="2026-07-08T10:22:50.539374" elapsed="0.000040"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.617097" elapsed="0.000020"/>
 </return>
-<msg time="2026-07-08T10:22:50.539575" level="INFO">${id} = SFHW29GPZjgbUV5g</msg>
 <var>${id}</var>
 <arg>${email}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.492623" elapsed="0.046974"/>
+<status status="FAIL" start="2026-07-09T11:07:53.551591" elapsed="0.065636">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </kw>
 <kw name="Login do Usuario" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.540319" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.540052" elapsed="0.000289"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.585317" level="INFO">POST Request : url=https://serverest.dev/login 
- path_url=/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '66'} 
- body={"email":"ct008_1783506170491750213@test.com","password":"123456"} 
- </msg>
-<msg time="2026-07-08T10:22:50.585415" level="INFO">POST Response : url=https://serverest.dev/login 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '78d6b1c8231a1c38e8c07542a7031676', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '295'} 
- body={
-    "message": "Login realizado com sucesso",
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.aL2nhH0bSdb4sT5oZKMDcsd61GD7Tx30JVl2K8on2CM"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.585533" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.585748" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/login</arg>
-<arg>headers=${header}</arg>
-<arg>data={"email":"${email}","password":"${password}"}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.540456" elapsed="0.045331"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.586794" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.aL2nhH0bSdb4sT5oZKMDc...</msg>
-<var>${token}</var>
-<arg>${response.json()['authorization']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.586025" elapsed="0.000794"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Login realizado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.586921" elapsed="0.000467"/>
-</kw>
-<return>
-<value>${token}</value>
-<status status="PASS" start="2026-07-08T10:22:50.587462" elapsed="0.000041"/>
-</return>
-<msg time="2026-07-08T10:22:50.587623" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.aL2nhH0bSdb4sT5oZKMDc...</msg>
 <var>${token}</var>
 <arg>${email}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.539772" elapsed="0.047873"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.617395" elapsed="0.000018"/>
 </kw>
 <kw name="Cadastrar Produto" owner="produto">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.588340" level="INFO">${ts} = 1783506170588286664</msg>
-<var>${ts}</var>
-<arg>__import__('time').time_ns()</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.588058" elapsed="0.000305"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.588724" level="INFO">${body} = {"nome":"Curso RobotFramework 1783506170588286664","preco":500,"descricao":"Robot","quantidade":200}</msg>
-<var>${body}</var>
-<arg>{"nome":"Curso RobotFramework ${ts}","preco":500,"descricao":"Robot","quantidade":200}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.588479" elapsed="0.000268"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.589136" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.588845" elapsed="0.000312"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.636661" level="INFO">POST Request : url=https://serverest.dev/produtos 
- path_url=/produtos 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.aL2nhH0bSdb4sT5oZKMDcsd61GD7Tx30JVl2K8on2CM', 'Content-Length': '100'} 
- body={"nome":"Curso RobotFramework 1783506170588286664","preco":500,"descricao":"Robot","quantidade":200} 
- </msg>
-<msg time="2026-07-08T10:22:50.636759" level="INFO">POST Response : url=https://serverest.dev/produtos 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '15e22813f36203f5e8c07542a7031b28', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "OTsG6F9RZCdi44qN"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.636826" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.636973" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/produtos</arg>
-<arg>headers=${header}</arg>
-<arg>data=${body}</arg>
-<arg>expected_status=201</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.589250" elapsed="0.047759"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.638004" level="INFO">${idp} = OTsG6F9RZCdi44qN</msg>
-<var>${idp}</var>
-<arg>${response.json()['_id']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.637229" elapsed="0.000798"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Cadastro realizado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.638127" elapsed="0.000510"/>
-</kw>
-<return>
-<value>${idp}</value>
-<status status="PASS" start="2026-07-08T10:22:50.638687" elapsed="0.000038"/>
-</return>
-<msg time="2026-07-08T10:22:50.638843" level="INFO">${idp} = OTsG6F9RZCdi44qN</msg>
 <var>${idp}</var>
 <arg>${token}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.587820" elapsed="0.051043"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.617531" elapsed="0.000014"/>
 </kw>
 <kw name="Cadastrar Carrinho" owner="carrinho">
-<kw name="Get File" owner="OperatingSystem">
-<msg time="2026-07-08T10:22:50.639480" level="INFO" html="true">Getting file '&lt;a href="file:///home/runner/work/api-automation-serverest/api-automation-serverest/Json/carrinho.json"&gt;/home/runner/work/api-automation-serverest/api-automation-serverest/Json/carrinho.json&lt;/a&gt;'.</msg>
-<msg time="2026-07-08T10:22:50.639637" level="INFO">${body} = {
-  "produtos": [
-    {
-      "idProduto": "_id",
-      "quantidade": 1
-    }
-  ]
-}</msg>
-<var>${body}</var>
-<arg>path=${EXECDIR}/Json/carrinho.json</arg>
-<doc>Returns the contents of a specified file.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.639306" elapsed="0.000353"/>
-</kw>
-<kw name="Replace String Using Regexp" owner="String">
-<msg time="2026-07-08T10:22:50.640015" level="INFO">${body} = {
-  "produtos": [
-    {
-      "idProduto": "OTsG6F9RZCdi44qN",
-      "quantidade": 1
-    }
-  ]
-}</msg>
-<var>${body}</var>
-<arg>${body}</arg>
-<arg>_id</arg>
-<arg>${idp}</arg>
-<doc>Replaces ``pattern`` in the given ``string`` with ``replace_with``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.639751" elapsed="0.000291"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.641610" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.640143" elapsed="0.001526"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.695663" level="INFO">POST Request : url=https://serverest.dev/carrinhos 
- path_url=/carrinhos 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.aL2nhH0bSdb4sT5oZKMDcsd61GD7Tx30JVl2K8on2CM', 'Content-Length': '96'} 
- body={
-  "produtos": [
-    {
-      "idProduto": "OTsG6F9RZCdi44qN",
-      "quantidade": 1
-    }
-  ]
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.695750" level="INFO">POST Response : url=https://serverest.dev/carrinhos 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '6492ab088c4ab55fe8c07542a70319b0', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "IQTMUOT8qyC3qmAp"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.695832" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.695985" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/carrinhos</arg>
-<arg>headers=${header}</arg>
-<arg>data=${body}</arg>
-<arg>expected_status=201</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.641772" elapsed="0.054252"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.697031" level="INFO">${idc} = IQTMUOT8qyC3qmAp</msg>
-<var>${idc}</var>
-<arg>${response.json()['_id']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.696249" elapsed="0.000806"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Cadastro realizado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.697156" elapsed="0.000513"/>
-</kw>
-<return>
-<value>${idc}</value>
-<status status="PASS" start="2026-07-08T10:22:50.697719" elapsed="0.000038"/>
-</return>
-<msg time="2026-07-08T10:22:50.697884" level="INFO">${idc} = IQTMUOT8qyC3qmAp</msg>
 <var>${idc}</var>
 <arg>${token}</arg>
 <arg>${idp}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.639044" elapsed="0.058860"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.617648" elapsed="0.000014"/>
 </kw>
 <kw name="Consultar Carrinho Lista" owner="carrinho">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.698545" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.698255" elapsed="0.000313"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.743299" level="INFO">GET Request : url=https://serverest.dev/carrinhos 
- path_url=/carrinhos 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:50.743389" level="INFO">GET Response : url=https://serverest.dev/carrinhos 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '6a5a6ba09e348ccce8c07542a7031e62', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '972'} 
- body={
-    "quantidade": 2,
-    "carrinhos": [
-        {
-            "produtos": [
-                {
-                    "idProduto": "OTsG6F9RZCdi44qN",
-                    "quantidade": 1,
-                    "precoUnitario": 500
-                }
-            ],
-            "precoTotal": 500,
-            "quantidadeTotal": 1,
-            "idUsuario": "SFHW29GPZjgbUV5g",
-            "_id": "IQTMUOT8qyC3qmAp"
-        },
-        {
-            "produtos": [
-                {
-                    "idProduto": "BeeJh5lz3k6kSIzA",
-                    "quantidade": 2,
-                    "precoUnitario": 470
-                },
-                {
-                    "idProduto": "K6leHdftCeOJj8BJ",
-                    "quantidade": 1,
-                    "precoUnitario": 5240
-                }
-            ],
-            "precoTotal": 6180,
-            "quantidadeTotal": 3,
-            "idUsuario": "0uxuPY0cbmQhpEz1",
-            "_id": "qbMqntef4iTOwWfg"
-        }
-    ]
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.743490" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.743635" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/carrinhos</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.698660" elapsed="0.045015"/>
-</kw>
-<status status="PASS" start="2026-07-08T10:22:50.698045" elapsed="0.045745"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.617741" elapsed="0.000013"/>
 </kw>
 <kw name="Consultar Carrinho ID" owner="carrinho">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.744766" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.744428" elapsed="0.000361"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.787103" level="INFO">GET Request : url=https://serverest.dev/carrinhos/IQTMUOT8qyC3qmAp 
- path_url=/carrinhos/IQTMUOT8qyC3qmAp 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:50.787192" level="INFO">GET Response : url=https://serverest.dev/carrinhos/IQTMUOT8qyC3qmAp 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '8a150a1b657c7467e8c07542a70317ff', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '271'} 
- body={
-    "produtos": [
-        {
-            "idProduto": "OTsG6F9RZCdi44qN",
-            "quantidade": 1,
-            "precoUnitario": 500
-        }
-    ],
-    "precoTotal": 500,
-    "quantidadeTotal": 1,
-    "idUsuario": "SFHW29GPZjgbUV5g",
-    "_id": "IQTMUOT8qyC3qmAp"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.787308" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.787482" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/carrinhos/${idc}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.744883" elapsed="0.042636"/>
-</kw>
 <arg>${idc}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.744036" elapsed="0.043596"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.617824" elapsed="0.000012"/>
 </kw>
 <kw name="Deletar Carrinho Concluir Compra" owner="carrinho">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.788669" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.788269" elapsed="0.000424"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.846111" level="INFO">DELETE Request : url=https://serverest.dev/carrinhos/concluir-compra 
- path_url=/carrinhos/concluir-compra 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.aL2nhH0bSdb4sT5oZKMDcsd61GD7Tx30JVl2K8on2CM', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:50.846210" level="INFO">DELETE Response : url=https://serverest.dev/carrinhos/concluir-compra 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '8cbb54a2221c97ede8c07542a70317c6', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '51'} 
- body={
-    "message": "Registro excluído com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.846276" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.846453" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/carrinhos/concluir-compra</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.788789" elapsed="0.057704"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro excluído com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.846719" elapsed="0.000791"/>
-</kw>
 <arg>${token}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.787888" elapsed="0.059695"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.617913" elapsed="0.000013"/>
 </kw>
 <kw name="Deletar Produto" owner="produto">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.848384" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.848058" elapsed="0.000349"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.907873" level="INFO">DELETE Request : url=https://serverest.dev/produtos/OTsG6F9RZCdi44qN 
- path_url=/produtos/OTsG6F9RZCdi44qN 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA4XzE3ODM1MDYxNzA0OTE3NTAyMTNAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MCwiZXhwIjoxNzgzNTA2NzcwfQ.aL2nhH0bSdb4sT5oZKMDcsd61GD7Tx30JVl2K8on2CM', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:50.907982" level="INFO">DELETE Response : url=https://serverest.dev/produtos/OTsG6F9RZCdi44qN 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '36da1bd0dfaa9517e8c07542a7031f2f', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '51'} 
- body={
-    "message": "Registro excluído com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.908057" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.908208" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/produtos/${idp}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.848535" elapsed="0.059704"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro excluído com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.908495" elapsed="0.000640"/>
-</kw>
 <arg>${idp}</arg>
 <arg>${token}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.847742" elapsed="0.061461"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.618002" elapsed="0.000013"/>
 </kw>
 <kw name="Deletar Usuario" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.909933" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.909665" elapsed="0.000291"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:50.958166" level="INFO">DELETE Request : url=https://serverest.dev/usuarios/SFHW29GPZjgbUV5g 
- path_url=/usuarios/SFHW29GPZjgbUV5g 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:50.958269" level="INFO">DELETE Response : url=https://serverest.dev/usuarios/SFHW29GPZjgbUV5g 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '0d99251df12cedede8c07542a7031cfb', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '51'} 
- body={
-    "message": "Registro excluído com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:50.958405" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:50.958572" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/usuarios/${id}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.910052" elapsed="0.048566"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro excluído com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.958825" elapsed="0.000664"/>
-</kw>
 <arg>${id}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.909358" elapsed="0.050204"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.618091" elapsed="0.000013"/>
 </kw>
 <tag>carrinho</tag>
 <tag>crud</tag>
 <tag>regressao</tag>
-<status status="PASS" start="2026-07-08T10:22:50.490407" elapsed="0.469255"/>
+<status status="FAIL" start="2026-07-09T11:07:53.549216" elapsed="0.069021">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </test>
 <test id="s1-t9" name="CT-009 Carrinho - Cancelar Compra" line="87">
 <kw name="Gerar Email">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.961081" level="INFO">${ts} = 1783506170961026332</msg>
+<msg time="2026-07-09T11:07:53.619287" level="INFO">${ts} = 1783595273619232858</msg>
 <var>${ts}</var>
 <arg>__import__('time').time_ns()</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.960782" elapsed="0.000323"/>
+<status status="PASS" start="2026-07-09T11:07:53.618936" elapsed="0.000373"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.961498" level="INFO">${email} = ct009_1783506170961026332@test.com</msg>
+<msg time="2026-07-09T11:07:53.619611" level="INFO">${email} = ct009_1783595273619232858@test.com</msg>
 <var>${email}</var>
 <arg>${prefixo}_${ts}@test.com</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.961203" elapsed="0.000319"/>
+<status status="PASS" start="2026-07-09T11:07:53.619395" elapsed="0.000236"/>
 </kw>
 <return>
 <value>${email}</value>
-<status status="PASS" start="2026-07-08T10:22:50.961566" elapsed="0.000035"/>
+<status status="PASS" start="2026-07-09T11:07:53.619704" elapsed="0.000032"/>
 </return>
-<msg time="2026-07-08T10:22:50.961707" level="INFO">${email} = ct009_1783506170961026332@test.com</msg>
+<msg time="2026-07-09T11:07:53.619822" level="INFO">${email} = ct009_1783595273619232858@test.com</msg>
 <var>${email}</var>
 <arg>ct009</arg>
-<status status="PASS" start="2026-07-08T10:22:50.960253" elapsed="0.001475"/>
+<status status="PASS" start="2026-07-09T11:07:53.618732" elapsed="0.001106"/>
 </kw>
 <kw name="Cadastrar Usuario" owner="usuario">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.962380" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<msg time="2026-07-09T11:07:53.620407" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
 <var>${header}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.962122" elapsed="0.000284"/>
+<status status="PASS" start="2026-07-09T11:07:53.620170" elapsed="0.000255"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:50.962815" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct009_1783506170961026332@test.com","password":"123456","administrador":"true"}</msg>
+<msg time="2026-07-09T11:07:53.620721" level="INFO">${body} = {"nome":"Usuário Teste","email":"ct009_1783595273619232858@test.com","password":"123456","administrador":"true"}</msg>
 <var>${body}</var>
 <arg>{"nome":"Usuário Teste","email":"${email}","password":"${password}","administrador":"true"}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.962555" elapsed="0.000282"/>
+<status status="PASS" start="2026-07-09T11:07:53.620505" elapsed="0.000234"/>
 </kw>
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:51.008964" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+<msg time="2026-07-09T11:07:53.683677" level="INFO">POST Request : url=https://serverest.dev/usuarios 
  path_url=/usuarios 
  headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '113'} 
- body={"nome":"Usuário Teste","email":"ct009_1783506170961026332@test.com","password":"123456","administrador":"true"} 
+ body={"nome":"Usuário Teste","email":"ct009_1783595273619232858@test.com","password":"123456","administrador":"true"} 
  </msg>
-<msg time="2026-07-08T10:22:51.009065" level="INFO">POST Response : url=https://serverest.dev/usuarios 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '143147f7a8b90344e8c07542a70317d7', 'date': 'Wed, 08 Jul 2026 10:22:50 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "MikF2J52RdP4VQep"
-} 
+<msg time="2026-07-09T11:07:53.683769" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=503, reason=Service Unavailable 
+ headers={'date': 'Thu, 09 Jul 2026 11:07:53 GMT', 'content-type': 'text/html; charset=UTF-8', 'server': 'Google Frontend', 'Content-Length': '302'} 
+ body=
+&lt;html&gt;&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;title&gt;503 Server Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body text=#000000 bgcolor=#ffffff&gt;
+&lt;h1&gt;Error: Server Error&lt;/h1&gt;
+&lt;h2&gt;The service you requested is not available yet.&lt;p&gt;Please try again in 30 seconds.&lt;/h2&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;/body&gt;&lt;/html&gt;
+ 
  </msg>
-<msg time="2026-07-08T10:22:51.009159" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2026-07-09T11:07:53.683846" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2026-07-08T10:22:51.009310" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<msg time="2026-07-09T11:07:53.683962" level="FAIL">Url: https://serverest.dev/usuarios Expected status: 503 != 201</msg>
 <var>${response}</var>
 <arg>alias=api</arg>
 <arg>url=/usuarios</arg>
@@ -1848,521 +832,94 @@
 <arg>data=${body}</arg>
 <arg>expected_status=201</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:50.962925" elapsed="0.046414"/>
+<status status="FAIL" start="2026-07-09T11:07:53.620816" elapsed="0.063597">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.010267" level="INFO">${id} = MikF2J52RdP4VQep</msg>
 <var>${id}</var>
 <arg>${response.json()['_id']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.009628" elapsed="0.000662"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.684606" elapsed="0.000029"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${response.json()['message']}</arg>
 <arg>Cadastro realizado com sucesso</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.010395" elapsed="0.000546"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.684708" elapsed="0.000013"/>
 </kw>
 <return>
 <value>${id}</value>
-<status status="PASS" start="2026-07-08T10:22:51.010991" elapsed="0.000039"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.684756" elapsed="0.000030"/>
 </return>
-<msg time="2026-07-08T10:22:51.011148" level="INFO">${id} = MikF2J52RdP4VQep</msg>
 <var>${id}</var>
 <arg>${email}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-07-08T10:22:50.961872" elapsed="0.049296"/>
+<status status="FAIL" start="2026-07-09T11:07:53.619959" elapsed="0.064922">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </kw>
 <kw name="Login do Usuario" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.011906" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.011650" elapsed="0.000278"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:51.055592" level="INFO">POST Request : url=https://serverest.dev/login 
- path_url=/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '66'} 
- body={"email":"ct009_1783506170961026332@test.com","password":"123456"} 
- </msg>
-<msg time="2026-07-08T10:22:51.055676" level="INFO">POST Response : url=https://serverest.dev/login 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'fc278549ee14ac5ae8c07542a70315a3', 'date': 'Wed, 08 Jul 2026 10:22:51 GMT', 'server': 'Google Frontend', 'Content-Length': '295'} 
- body={
-    "message": "Login realizado com sucesso",
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MSwiZXhwIjoxNzgzNTA2NzcxfQ.gM5sI5KN6kfxljPXXvdmBjTNJbpNtjG1DJhfVtVxoog"
-} 
- </msg>
-<msg time="2026-07-08T10:22:51.055798" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:51.055940" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/login</arg>
-<arg>headers=${header}</arg>
-<arg>data={"email":"${email}","password":"${password}"}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.012016" elapsed="0.043965"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.057053" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MSwiZXhwIjoxNzgzNTA2NzcxfQ.gM5sI5KN6kfxljPXXvdmB...</msg>
-<var>${token}</var>
-<arg>${response.json()['authorization']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.056211" elapsed="0.000867"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Login realizado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.057190" elapsed="0.000518"/>
-</kw>
-<return>
-<value>${token}</value>
-<status status="PASS" start="2026-07-08T10:22:51.057760" elapsed="0.000041"/>
-</return>
-<msg time="2026-07-08T10:22:51.057922" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MSwiZXhwIjoxNzgzNTA2NzcxfQ.gM5sI5KN6kfxljPXXvdmB...</msg>
 <var>${token}</var>
 <arg>${email}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-07-08T10:22:51.011341" elapsed="0.046604"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.685063" elapsed="0.000020"/>
 </kw>
 <kw name="Cadastrar Produto" owner="produto">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.058690" level="INFO">${ts} = 1783506171058640329</msg>
-<var>${ts}</var>
-<arg>__import__('time').time_ns()</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.058361" elapsed="0.000352"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.059042" level="INFO">${body} = {"nome":"Curso RobotFramework 1783506171058640329","preco":500,"descricao":"Robot","quantidade":200}</msg>
-<var>${body}</var>
-<arg>{"nome":"Curso RobotFramework ${ts}","preco":500,"descricao":"Robot","quantidade":200}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.058807" elapsed="0.000258"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.059526" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.059188" elapsed="0.000360"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:51.107790" level="INFO">POST Request : url=https://serverest.dev/produtos 
- path_url=/produtos 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MSwiZXhwIjoxNzgzNTA2NzcxfQ.gM5sI5KN6kfxljPXXvdmBjTNJbpNtjG1DJhfVtVxoog', 'Content-Length': '100'} 
- body={"nome":"Curso RobotFramework 1783506171058640329","preco":500,"descricao":"Robot","quantidade":200} 
- </msg>
-<msg time="2026-07-08T10:22:51.107876" level="INFO">POST Response : url=https://serverest.dev/produtos 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'cee307936dcdaa70e8c07542a7031e84', 'date': 'Wed, 08 Jul 2026 10:22:51 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "lHfeiKLtQdFuRKgk"
-} 
- </msg>
-<msg time="2026-07-08T10:22:51.107938" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:51.108077" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/produtos</arg>
-<arg>headers=${header}</arg>
-<arg>data=${body}</arg>
-<arg>expected_status=201</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.059640" elapsed="0.048476"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.109123" level="INFO">${idp} = lHfeiKLtQdFuRKgk</msg>
-<var>${idp}</var>
-<arg>${response.json()['_id']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.108343" elapsed="0.000805"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Cadastro realizado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.109246" elapsed="0.000514"/>
-</kw>
-<return>
-<value>${idp}</value>
-<status status="PASS" start="2026-07-08T10:22:51.109812" elapsed="0.000037"/>
-</return>
-<msg time="2026-07-08T10:22:51.109968" level="INFO">${idp} = lHfeiKLtQdFuRKgk</msg>
 <var>${idp}</var>
 <arg>${token}</arg>
-<status status="PASS" start="2026-07-08T10:22:51.058123" elapsed="0.051866"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.685210" elapsed="0.000017"/>
 </kw>
 <kw name="Cadastrar Carrinho" owner="carrinho">
-<kw name="Get File" owner="OperatingSystem">
-<msg time="2026-07-08T10:22:51.110606" level="INFO" html="true">Getting file '&lt;a href="file:///home/runner/work/api-automation-serverest/api-automation-serverest/Json/carrinho.json"&gt;/home/runner/work/api-automation-serverest/api-automation-serverest/Json/carrinho.json&lt;/a&gt;'.</msg>
-<msg time="2026-07-08T10:22:51.110748" level="INFO">${body} = {
-  "produtos": [
-    {
-      "idProduto": "_id",
-      "quantidade": 1
-    }
-  ]
-}</msg>
-<var>${body}</var>
-<arg>path=${EXECDIR}/Json/carrinho.json</arg>
-<doc>Returns the contents of a specified file.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.110429" elapsed="0.000341"/>
-</kw>
-<kw name="Replace String Using Regexp" owner="String">
-<msg time="2026-07-08T10:22:51.111060" level="INFO">${body} = {
-  "produtos": [
-    {
-      "idProduto": "lHfeiKLtQdFuRKgk",
-      "quantidade": 1
-    }
-  ]
-}</msg>
-<var>${body}</var>
-<arg>${body}</arg>
-<arg>_id</arg>
-<arg>${idp}</arg>
-<doc>Replaces ``pattern`` in the given ``string`` with ``replace_with``.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.110861" elapsed="0.000219"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.111736" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.111181" elapsed="0.000622"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:51.161774" level="INFO">POST Request : url=https://serverest.dev/carrinhos 
- path_url=/carrinhos 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MSwiZXhwIjoxNzgzNTA2NzcxfQ.gM5sI5KN6kfxljPXXvdmBjTNJbpNtjG1DJhfVtVxoog', 'Content-Length': '96'} 
- body={
-  "produtos": [
-    {
-      "idProduto": "lHfeiKLtQdFuRKgk",
-      "quantidade": 1
-    }
-  ]
-} 
- </msg>
-<msg time="2026-07-08T10:22:51.161859" level="INFO">POST Response : url=https://serverest.dev/carrinhos 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '3c97468b3daad006e8c07542a7031b94', 'date': 'Wed, 08 Jul 2026 10:22:51 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "bivXisJuGLgqmSGm"
-} 
- </msg>
-<msg time="2026-07-08T10:22:51.161942" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:51.162081" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/carrinhos</arg>
-<arg>headers=${header}</arg>
-<arg>data=${body}</arg>
-<arg>expected_status=201</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.111902" elapsed="0.050219"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.163157" level="INFO">${idc} = bivXisJuGLgqmSGm</msg>
-<var>${idc}</var>
-<arg>${response.json()['_id']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.162349" elapsed="0.000832"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Cadastro realizado com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.163280" elapsed="0.000521"/>
-</kw>
-<return>
-<value>${idc}</value>
-<status status="PASS" start="2026-07-08T10:22:51.163852" elapsed="0.000038"/>
-</return>
-<msg time="2026-07-08T10:22:51.164009" level="INFO">${idc} = bivXisJuGLgqmSGm</msg>
 <var>${idc}</var>
 <arg>${token}</arg>
 <arg>${idp}</arg>
-<status status="PASS" start="2026-07-08T10:22:51.110163" elapsed="0.053867"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.685329" elapsed="0.000013"/>
 </kw>
 <kw name="Consultar Carrinho Lista" owner="carrinho">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.164669" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.164375" elapsed="0.000317"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:51.208297" level="INFO">GET Request : url=https://serverest.dev/carrinhos 
- path_url=/carrinhos 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:51.208395" level="INFO">GET Response : url=https://serverest.dev/carrinhos 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '5e81e9a20b34a9fae8c07542a7031475', 'date': 'Wed, 08 Jul 2026 10:22:51 GMT', 'server': 'Google Frontend', 'Content-Length': '972'} 
- body={
-    "quantidade": 2,
-    "carrinhos": [
-        {
-            "produtos": [
-                {
-                    "idProduto": "lHfeiKLtQdFuRKgk",
-                    "quantidade": 1,
-                    "precoUnitario": 500
-                }
-            ],
-            "precoTotal": 500,
-            "quantidadeTotal": 1,
-            "idUsuario": "MikF2J52RdP4VQep",
-            "_id": "bivXisJuGLgqmSGm"
-        },
-        {
-            "produtos": [
-                {
-                    "idProduto": "BeeJh5lz3k6kSIzA",
-                    "quantidade": 2,
-                    "precoUnitario": 470
-                },
-                {
-                    "idProduto": "K6leHdftCeOJj8BJ",
-                    "quantidade": 1,
-                    "precoUnitario": 5240
-                }
-            ],
-            "precoTotal": 6180,
-            "quantidadeTotal": 3,
-            "idUsuario": "0uxuPY0cbmQhpEz1",
-            "_id": "qbMqntef4iTOwWfg"
-        }
-    ]
-} 
- </msg>
-<msg time="2026-07-08T10:22:51.208514" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:51.208681" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/carrinhos</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.164781" elapsed="0.043946"/>
-</kw>
-<status status="PASS" start="2026-07-08T10:22:51.164168" elapsed="0.044690"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.685424" elapsed="0.000013"/>
 </kw>
 <kw name="Consultar Carrinho ID" owner="carrinho">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.209841" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.209526" elapsed="0.000338"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:51.254100" level="INFO">GET Request : url=https://serverest.dev/carrinhos/bivXisJuGLgqmSGm 
- path_url=/carrinhos/bivXisJuGLgqmSGm 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:51.254187" level="INFO">GET Response : url=https://serverest.dev/carrinhos/bivXisJuGLgqmSGm 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'a5129e249d4f80fde8c07542a70310c9', 'date': 'Wed, 08 Jul 2026 10:22:51 GMT', 'server': 'Google Frontend', 'Content-Length': '271'} 
- body={
-    "produtos": [
-        {
-            "idProduto": "lHfeiKLtQdFuRKgk",
-            "quantidade": 1,
-            "precoUnitario": 500
-        }
-    ],
-    "precoTotal": 500,
-    "quantidadeTotal": 1,
-    "idUsuario": "MikF2J52RdP4VQep",
-    "_id": "bivXisJuGLgqmSGm"
-} 
- </msg>
-<msg time="2026-07-08T10:22:51.254303" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:51.254469" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/carrinhos/${idc}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.209957" elapsed="0.044554"/>
-</kw>
 <arg>${idc}</arg>
-<status status="PASS" start="2026-07-08T10:22:51.209122" elapsed="0.045506"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.685506" elapsed="0.000012"/>
 </kw>
 <kw name="Deletar Carrinho Cancelar Compra" owner="carrinho">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.255709" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.255279" elapsed="0.000455"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:51.313185" level="INFO">DELETE Request : url=https://serverest.dev/carrinhos/cancelar-compra 
- path_url=/carrinhos/cancelar-compra 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MSwiZXhwIjoxNzgzNTA2NzcxfQ.gM5sI5KN6kfxljPXXvdmBjTNJbpNtjG1DJhfVtVxoog', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:51.313274" level="INFO">DELETE Response : url=https://serverest.dev/carrinhos/cancelar-compra 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '80740d8d37e55c69e8c07542a7031208', 'date': 'Wed, 08 Jul 2026 10:22:51 GMT', 'server': 'Google Frontend', 'Content-Length': '86'} 
- body={
-    "message": "Registro excluído com sucesso. Estoque dos produtos reabastecido"
-} 
- </msg>
-<msg time="2026-07-08T10:22:51.313340" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:51.313518" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/carrinhos/cancelar-compra</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.255833" elapsed="0.057731"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro excluído com sucesso. Estoque dos produtos reabastecido</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.313786" elapsed="0.000802"/>
-</kw>
 <arg>${token}</arg>
-<status status="PASS" start="2026-07-08T10:22:51.254892" elapsed="0.059763"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.685594" elapsed="0.000013"/>
 </kw>
 <kw name="Deletar Produto" owner="produto">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.315411" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4M...</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.315099" elapsed="0.000355"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:51.362816" level="INFO">DELETE Request : url=https://serverest.dev/produtos/lHfeiKLtQdFuRKgk 
- path_url=/produtos/lHfeiKLtQdFuRKgk 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN0MDA5XzE3ODM1MDYxNzA5NjEwMjYzMzJAdGVzdC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTc4MzUwNjE3MSwiZXhwIjoxNzgzNTA2NzcxfQ.gM5sI5KN6kfxljPXXvdmBjTNJbpNtjG1DJhfVtVxoog', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:51.362917" level="INFO">DELETE Response : url=https://serverest.dev/produtos/lHfeiKLtQdFuRKgk 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'af89be8805bd1b3be8c07542a7031832', 'date': 'Wed, 08 Jul 2026 10:22:51 GMT', 'server': 'Google Frontend', 'Content-Length': '51'} 
- body={
-    "message": "Registro excluído com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:51.362992" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:51.363159" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/produtos/${idp}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.315554" elapsed="0.047650"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro excluído com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.363462" elapsed="0.000808"/>
-</kw>
 <arg>${idp}</arg>
 <arg>${token}</arg>
-<status status="PASS" start="2026-07-08T10:22:51.314812" elapsed="0.049524"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.685678" elapsed="0.000013"/>
 </kw>
 <kw name="Deletar Usuario" owner="usuario">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-07-08T10:22:51.365071" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.364805" elapsed="0.000289"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:51.413847" level="INFO">DELETE Request : url=https://serverest.dev/usuarios/MikF2J52RdP4VQep 
- path_url=/usuarios/MikF2J52RdP4VQep 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-07-08T10:22:51.414010" level="INFO">DELETE Response : url=https://serverest.dev/usuarios/MikF2J52RdP4VQep 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'f02aec3b85dfb8dbe8c07542a70313ca', 'date': 'Wed, 08 Jul 2026 10:22:51 GMT', 'server': 'Google Frontend', 'Content-Length': '51'} 
- body={
-    "message": "Registro excluído com sucesso"
-} 
- </msg>
-<msg time="2026-07-08T10:22:51.414088" level="INFO">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-07-08T10:22:51.414248" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>alias=api</arg>
-<arg>url=/usuarios/${id}</arg>
-<arg>headers=${header}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.365188" elapsed="0.049099"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()['message']}</arg>
-<arg>Registro excluído com sucesso</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-07-08T10:22:51.414537" elapsed="0.000789"/>
-</kw>
 <arg>${id}</arg>
-<status status="PASS" start="2026-07-08T10:22:51.364537" elapsed="0.050858"/>
+<status status="NOT RUN" start="2026-07-09T11:07:53.685975" elapsed="0.000014"/>
 </kw>
 <tag>carrinho</tag>
 <tag>regressao</tag>
-<status status="PASS" start="2026-07-08T10:22:50.959868" elapsed="0.455661"/>
+<status status="FAIL" start="2026-07-09T11:07:53.618434" elapsed="0.067681">Url: https://serverest.dev/usuarios Expected status: 503 != 201</status>
 </test>
 <kw name="Encerrar Sessão" owner="usuario" type="TEARDOWN">
 <kw name="Delete All Sessions" owner="RequestsLibrary">
-<msg time="2026-07-08T10:22:51.416780" level="INFO">Deleting All Sessions</msg>
+<msg time="2026-07-09T11:07:53.686936" level="INFO">Deleting All Sessions</msg>
 <doc>Removes all the session objects</doc>
-<status status="PASS" start="2026-07-08T10:22:51.416700" elapsed="0.000154"/>
+<status status="PASS" start="2026-07-09T11:07:53.686870" elapsed="0.000148"/>
 </kw>
-<status status="PASS" start="2026-07-08T10:22:51.416205" elapsed="0.000697"/>
+<status status="PASS" start="2026-07-09T11:07:53.686695" elapsed="0.000362"/>
 </kw>
-<status status="PASS" start="2026-07-08T10:22:48.679328" elapsed="2.737596"/>
+<status status="FAIL" start="2026-07-09T11:07:52.608664" elapsed="1.078411"/>
 </suite>
 <statistics>
 <total>
-<stat pass="9" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="9" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="2" fail="0" skip="0">carrinho</stat>
-<stat pass="3" fail="0" skip="0">crud</stat>
-<stat pass="5" fail="0" skip="0">negativo</stat>
-<stat pass="3" fail="0" skip="0">produto</stat>
-<stat pass="4" fail="0" skip="0">regressao</stat>
-<stat pass="4" fail="0" skip="0">usuario</stat>
+<stat pass="0" fail="2" skip="0">carrinho</stat>
+<stat pass="0" fail="3" skip="0">crud</stat>
+<stat pass="0" fail="5" skip="0">negativo</stat>
+<stat pass="0" fail="3" skip="0">produto</stat>
+<stat pass="0" fail="4" skip="0">regressao</stat>
+<stat pass="0" fail="4" skip="0">usuario</stat>
 </tag>
 <suite>
-<stat name="API Serverrest" id="s1" pass="9" fail="0" skip="0">API Serverrest</stat>
+<stat name="API Serverrest" id="s1" pass="0" fail="9" skip="0">API Serverrest</stat>
 </suite>
 </statistics>
 <errors>
