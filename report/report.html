@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.4.2 (Python 3.12.14 on linux)" name="Generator">
+<meta content="Robot Framework 7.5 (Python 3.12.14 on linux)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -546,6 +546,28 @@ input[type='submit']:hover, input[type='button']:hover {
 #test-details th, #test-details td {
     padding: 0.2em;
 }
+#test-details .metadata {
+    table-layout: auto;
+    width: 100%;
+    border-spacing: 0;
+}
+#test-details .metadata th, #test-details .metadata td {
+    padding: 0 0 0.2em 0;
+    vertical-align: top;
+    text-align: left;
+    background: transparent;
+}
+#test-details .metadata th {
+    width: 1%;
+    padding-right: 0.6em;
+    font-weight: bold;
+}
+#test-details .metadata td {
+    overflow-wrap: anywhere;
+}
+#test-details .details-col-metadata .details-limited {
+    overflow-x: hidden;
+}
 .details-limited {
     max-height: 20em;
     overflow: auto;
@@ -570,8 +592,21 @@ input[type='submit']:hover, input[type='button']:hover {
 .details-col-doc {
     min-width: 10em;
 }
+.details-col-metadata {
+    min-width: 10em;
+}
 .details-col-tags {
     min-width: 10em;
+}
+.details-col-tags .tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.details-col-tags .label {
+    margin: 0 0.3em 0.3em 0;
+    font-size: 1em;
+    letter-spacing: normal;
 }
 .details-col-crit {
     width: 3.5em;
@@ -927,6 +962,7 @@ window.model = (function () {
         test.fullName = data.parent.fullName + '.' + test.name;
         test.formatParentName = function () { return util.formatParentName(test); };
         test.timeout = data.timeout;
+        test.metadata = data.metadata;
         test.populateKeywords = createIterablePopulator('Keyword');
         test.childrenNames = ['keyword'];
         test.isChildrenLoaded = data.isChildrenLoaded;
@@ -1375,7 +1411,7 @@ window.testdata = function () {
             timeout: strings.get(element[3]),
             args: strings.get(element[5]),
             assign: strings.get(element[6]),
-            tags: strings.get(element[7]),
+            tags: tags(element[7], strings),
             doc: function () {
                 var doc = strings.get(element[4]);
                 this.doc = function () { return doc; };
@@ -1410,7 +1446,7 @@ window.testdata = function () {
         return util.map(taglist, strings.get);
     }
     function createTest(parent, element, strings, index) {
-        var status = element[4];
+        var status = element[5];
         var test = model.Test({
             parent: parent,
             id: 't' + (index + 1),
@@ -1421,6 +1457,7 @@ window.testdata = function () {
                 return doc;
             },
             timeout: strings.get(element[1]),
+            metadata: parseMetadata(element[4], strings),
             status: parseStatus(status),
             message: function () {
                 var msg = status.length == 4 ? strings.get(status[3]) : '';
@@ -1429,9 +1466,9 @@ window.testdata = function () {
             },
             times: model.Times(times(status)),
             tags: tags(element[3], strings),
-            isChildrenLoaded: typeof(element[5]) !== 'number'
+            isChildrenLoaded: typeof(element[6]) !== 'number'
         });
-        lazyPopulateKeywordsFromFile(test, element[5], strings);
+        lazyPopulateKeywordsFromFile(test, element[6], strings);
         return test;
     }
     function createSuite(parent, element, strings, index) {
@@ -1881,7 +1918,7 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,2242],[],[[4,0,0,[5,6,7],[1,130,490],[]],[8,0,0,[9,7],[1,621,134],[]],[10,0,0,[9,7],[1,754,45],[]],[11,0,0,[9,7],[1,800,57],[]],[12,0,0,[5,13,6],[1,856,365],[]],[14,0,0,[9,13],[1,1222,121],[]],[15,0,0,[9,13],[1,1343,45],[]],[16,0,0,[17,5,6],[1,1389,417],[]],[18,0,0,[17,6],[1,1806,435],[]]],[],[9,9,0,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,3016],[],[[4,0,0,[5,6,7],[],[1,140,586],[]],[8,0,0,[9,7],[],[1,726,198],[]],[10,0,0,[9,7],[],[1,925,66],[]],[11,0,0,[9,7],[],[1,991,70],[]],[12,0,0,[5,13,6],[],[1,1061,552],[]],[14,0,0,[9,13],[],[1,1614,64],[]],[15,0,0,[9,13],[],[1,1678,65],[]],[16,0,0,[17,5,6],[],[1,1743,641],[]],[18,0,0,[17,6],[],[1,2384,631],[]]],[],[9,9,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
@@ -1890,13 +1927,13 @@ window.output["strings"] = [];
 window.output["strings"] = window.output["strings"].concat(["*","*API Serverrest","*/home/runner/work/api-automation-serverest/api-automation-serverest/Tests/API_Serverrest.robot","*../Tests/API_Serverrest.robot","*CT-001 CRUD Usuario - Fluxo Completo","*crud","*regressao","*usuario","*CT-002 Erro - Cadastrar Usuario com Email Duplicado","*negativo","*CT-003 Erro - Login com Senha Invalida","*CT-004 Erro - Consultar Usuario Inexistente","*CT-005 CRUD Produto - Fluxo Completo","*produto","*CT-006 Erro - Cadastrar Produto Sem Token","*CT-007 Erro - Consultar Produto Inexistente","*CT-008 Carrinho - Concluir Compra com Sucesso","*carrinho","*CT-009 Carrinho - Cancelar Compra"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:02","fail":0,"label":"All Tests","pass":9,"skip":0}],[{"elapsed":"00:00:01","fail":0,"label":"carrinho","pass":2,"skip":0},{"elapsed":"00:00:01","fail":0,"label":"crud","pass":3,"skip":0},{"elapsed":"00:00:00","fail":0,"label":"negativo","pass":5,"skip":0},{"elapsed":"00:00:01","fail":0,"label":"produto","pass":3,"skip":0},{"elapsed":"00:00:02","fail":0,"label":"regressao","pass":4,"skip":0},{"elapsed":"00:00:01","fail":0,"label":"usuario","pass":4,"skip":0}],[{"elapsed":"00:00:02","fail":0,"id":"s1","label":"API Serverrest","name":"API Serverrest","pass":9,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:03","fail":0,"label":"All Tests","pass":9,"skip":0}],[{"elapsed":"00:00:01","fail":0,"label":"carrinho","pass":2,"skip":0},{"elapsed":"00:00:02","fail":0,"label":"crud","pass":3,"skip":0},{"elapsed":"00:00:00","fail":0,"label":"negativo","pass":5,"skip":0},{"elapsed":"00:00:01","fail":0,"label":"produto","pass":3,"skip":0},{"elapsed":"00:00:02","fail":0,"label":"regressao","pass":4,"skip":0},{"elapsed":"00:00:01","fail":0,"label":"usuario","pass":4,"skip":0}],[{"elapsed":"00:00:03","fail":0,"id":"s1","label":"API Serverrest","name":"API Serverrest","pass":9,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1789130537748;
+window.output["baseMillis"] = 1789397532640;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 2268;
+window.output["generated"] = 3035;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -2241,12 +2278,12 @@ function renderTestDetailsRows(tests, target) {
 }
 
 function configureTableSorter(sortByStatus) {
-    var config = {headers: {3: {sorter: 'status'},
-                            5: {sortInitialOrder: 'desc'},
-                            6: {sorter: 'times'}},
+    var config = {headers: {4: {sorter: 'status'},
+                            6: {sortInitialOrder: 'desc'},
+                            7: {sorter: 'times'}},
                   selectorSort: '.details-col-header'};
     if (sortByStatus)
-        config['sortList'] = [[3, 0]];
+        config['sortList'] = [[4, 0]];
     $('#test-details').tablesorter(config);
 }
 
@@ -2261,18 +2298,24 @@ function toggleDetailsColumn(name) {
     var column = $('.details-col-' + name);
     column.toggleClass('hidden');
     var hidden = column.hasClass('hidden');
+    if (name === 'tags') {
+      column.find('.tags').toggle();
+    }
     storage.set(name, hidden ? 'hidden' : 'visible');
     column.find('.details-col-toggle').html(hidden ? '&hellip;' : '&times;');
 }
 
 function hideHiddenDetailsColumns(elem) {
-    var names = ['doc', 'tags', 'msg', 'elapsed', 'times'];
+    var names = ['doc', 'metadata', 'tags', 'msg', 'elapsed', 'times'];
     for (var i = 0; i < names.length; i++) {
         var name = names[i];
-        if (storage.get(name, 'visible') == 'hidden') {
+        if (storage.get(name, 'visible') === 'hidden') {
             var column = elem.find('.details-col-' + name);
             column.addClass('hidden');
             column.find('.details-col-toggle').html('&hellip;');
+            if (name === 'tags') {
+                column.find('.tags').hide();
+            }
         }
     }
 }
@@ -2679,6 +2722,10 @@ function hideHiddenDetailsColumns(elem) {
           <div class='details-col-toggle' onclick="toggleDetailsColumn('doc')">&times;</div>
           <div class='details-col-header'>Documentation</div>
         </th>
+        <th class="details-col-metadata" title="Metadata">
+          <div class='details-col-toggle' onclick="toggleDetailsColumn('metadata')">&times;</div>
+          <div class='details-col-header'>Metadata</div>
+        </th>
         <th class="details-col-tags" title="Tags">
           <div class='details-col-toggle' onclick="toggleDetailsColumn('tags')">&times;</div>
           <div class='details-col-header'>Tags</div>
@@ -2717,7 +2764,8 @@ function hideHiddenDetailsColumns(elem) {
     </td>
   {{/if}}
     <td class="details-col-doc"><div class="doc details-limited">{{html doc()}}</div></td>
-    <td class="details-col-tags"><div>{{html tags.join(', ')}}</div></td>
+    <td class="details-col-metadata"><div class="details-limited">{{if metadata.length}}<table class="metadata">{{each metadata}}<tr><th>{{html $value[0]}}:</th><td class="doc">{{html $value[1]}}</td></tr>{{/each}}</table>{{/if}}</div></td>
+    <td class="details-col-tags"><div class="tags">{{each tags}}<span class="label">{{html $value}}</span>{{/each}}</div></td>
     <td class="details-col-status"><div><span class="label ${status.toLowerCase()}">${status}</span></div></td>
     <td class="details-col-msg"><div class="message details-limited">{{html message()}}</div></td>
     <td class="details-col-elapsed"><div>${times.elapsedTime}</div></td>
